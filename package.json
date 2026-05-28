@@ -15,7 +15,7 @@
     "access": "public"
   },
   "bin": {
-    "toolkit-next-ts-starter": "./scripts/create-starter.mjs"
+    "toolkit-next-ts-starter": "scripts/create-starter.mjs"
   },
   "files": [
     ".claude/skills.md",

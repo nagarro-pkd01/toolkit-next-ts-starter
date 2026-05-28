@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 46, "column": 0}, "map": {"version":3,"sources":["file:///Users/prateek/Documents/project-playground/nagarro-projects/practices/toolkit-next-ts-starter/src/app/api/health/route.ts"],"sourcesContent":["import { NextResponse } from \"next/server\";\n\nexport async function GET(): Promise<NextResponse> {\n  return NextResponse.json({\n    service: \"toolkit-next-ts-starter\",\n    status: \"ok\",\n    timestamp: new Date().toISOString(),\n  });\n}\n"],"names":["GET","json","service","status","timestamp","Date","toISOString"],"mappings":";;;;AAAA;;AAEO,eAAeA;IACpB,OAAO,gJAAY,CAACC,IAAI,CAAC;QACvBC,SAAS;QACTC,QAAQ;QACRC,WAAW,IAAIC,OAAOC,WAAW;IACnC;AACF"}}]
-}

@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 10, "column": 0}, "map": {"version":3,"sources":["file:///Users/prateek/Documents/project-playground/nagarro-projects/practices/toolkit-next-ts-starter/src/app/providers.tsx"],"sourcesContent":["\"use client\";\n\nimport type { ReactNode } from \"react\";\n\ntype ProvidersProps = {\n  children: ReactNode;\n};\n\nexport const Providers = ({ children }: ProvidersProps) => {\n  return <>{children}</>;\n};\n"],"names":["Providers","children"],"mappings":";;;;;AAAA;;AAQO,MAAMA,YAAY,CAAC,EAAEC,QAAQ,EAAkB;IACpD,qBAAO;kBAAGA;;AACZ"}}]
-}

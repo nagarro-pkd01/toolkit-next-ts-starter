@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///turbopack:///[project]/src/components/molecules/search-bar/search-bar.module.scss"],"sourcesContent":[".searchBar {\n  align-items: center;\n  display: grid;\n  gap: 8px;\n  grid-template-columns: auto 1fr;\n}\n"],"names":[],"mappings":"AAAA"}}]
-}

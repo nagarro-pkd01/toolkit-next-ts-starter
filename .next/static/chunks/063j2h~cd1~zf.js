@@ -1,1 +1,0 @@
-(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,15382,t=>{"use strict";var e=t.i(71645);t.s(["useAuth",0,()=>{let[t,u]=(0,e.useState)(null);return{setUser:u,user:t}}])}]);

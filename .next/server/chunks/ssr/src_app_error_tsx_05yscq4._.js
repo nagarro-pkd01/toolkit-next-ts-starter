@@ -1,3 +1,0 @@
-module.exports=[23953,a=>{"use strict";var b=a.i(87924),c=a.i(72131);let d=(a,b,c)=>{(({context:a,level:b,message:c})=>{let d=`[${new Date().toISOString()}] [${b}] ${c}`;"ERROR"===b?console.error(d,a):"WARN"===b?console.warn(d,a):console.info(d,a)})({context:c,level:a,message:b})},e={error(a,b={}){d("ERROR",a,b)},info(a,b={}){d("INFO",a,b)},warn(a,b={}){d("WARN",a,b)}};a.s(["default",0,function({error:a,reset:d}){return(0,c.useEffect)(()=>{e.error("Unhandled route error",{digest:a.digest,message:a.message,name:a.name})},[a]),(0,b.jsxs)("div",{style:{padding:24},children:[(0,b.jsx)("h2",{children:"Something went wrong"}),(0,b.jsx)("button",{onClick:d,type:"button",children:"Retry"})]})}],23953)}];
-
-//# sourceMappingURL=src_app_error_tsx_05yscq4._.js.map

@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///turbopack:///[project]/src/components/ui/input/input.module.scss"],"sourcesContent":[".input {\n  background: white;\n  border: 1px solid var(--color-border);\n  border-radius: 8px;\n  color: var(--color-text);\n  min-height: 38px;\n  padding: 8px 10px;\n}\n"],"names":[],"mappings":"AAAA"}}]
-}
