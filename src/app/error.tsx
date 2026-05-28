@@ -20,7 +20,7 @@ export default function GlobalError({ error, reset }: ErrorPageProps) {
 
   return (
     <div style={{ padding: 24 }}>
-      <h2>Something went wrong</h2>
+      <h2>Something went wrong !</h2>
       <button onClick={reset} type="button">
         Retry
       </button>
