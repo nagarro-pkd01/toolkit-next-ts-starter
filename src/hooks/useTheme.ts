@@ -1,19 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
-type Theme = "light" | "dark";
+import { useThemeContext } from "@/components/organisms/theme-provider/ThemeProvider";
 
 export const useTheme = () => {
-  const [theme, setTheme] = useState<Theme>("light");
+  const { preference, resolvedTheme, setPreference, toggleTheme } = useThemeContext();
 
-  useEffect(() => {
-    if (theme === "dark") {
-      document.documentElement.classList.add("theme-dark");
-      return;
-    }
-    document.documentElement.classList.remove("theme-dark");
-  }, [theme]);
-
-  return { setTheme, theme };
+  return {
+    preference,
+    resolvedTheme,
+    setPreference,
+    setTheme: setPreference,
+    theme: resolvedTheme,
+    toggleTheme,
+  };
 };

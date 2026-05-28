@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 
 import { ProductPageTemplate } from "@/components/templates/product-page/ProductPageTemplate";
-import { APP_ROUTES } from "@/constants/app";
+import { APP_ROUTES } from "@/constants/routeConstants";
 import { PostsSkeleton } from "@/views/rendering/components/PostsSkeleton";
 import { RenderingMeta } from "@/views/rendering/components/RenderingMeta";
 import { SlowPostsBlock } from "@/views/rendering/components/SlowPostsBlock";

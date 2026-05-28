@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { ProductPageTemplate } from "@/components/templates/product-page/ProductPageTemplate";
-import { APP_ROUTES } from "@/constants/app";
+import { APP_ROUTES } from "@/constants/routeConstants";
 import { fetchExamplePosts } from "@/services/rendering/fetchExamplePosts";
 import { PostPreviewList } from "@/views/rendering/components/PostPreviewList";
 import { RenderingMeta } from "@/views/rendering/components/RenderingMeta";

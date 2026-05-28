@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Providers } from "@/app/providers";
 import "@/styles/globals.scss";
+import { themeInitScript } from "@/utils/theme/themeInitScript";
 
 export const metadata: Metadata = {
   title: "Toolkit Next TS Enterprise Starter",
@@ -13,8 +15,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
+        <Script id="theme-init" strategy="beforeInteractive">
+          {themeInitScript}
+        </Script>
         <Providers>{children}</Providers>
       </body>
     </html>

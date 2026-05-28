@@ -8,4 +8,5 @@ export const APP_ROUTES = {
   renderingStatic: "/rendering/static",
   renderingStreaming: "/rendering/streaming",
   signIn: "/sign-in",
+  theme: "/theme",
 } as const;

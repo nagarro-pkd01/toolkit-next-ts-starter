@@ -1,6 +1,6 @@
 import type { Route } from "next";
 
-import { APP_ROUTES } from "@/constants/app";
+import { APP_ROUTES } from "@/constants/routeConstants";
 
 export type LayoutShellId = "auth" | "dashboard" | "shop";
 
@@ -32,6 +32,7 @@ export const HEADER_CONFIG: HeaderConfig = {
     { href: APP_ROUTES.home, label: "Shop" },
     { href: APP_ROUTES.dashboard, label: "Dashboard" },
     { href: APP_ROUTES.rendering, label: "Rendering" },
+    { href: APP_ROUTES.theme, label: "Theme" },
     { href: APP_ROUTES.signIn, label: "Sign in" },
   ],
   showSearch: true,

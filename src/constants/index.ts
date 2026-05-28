@@ -1,5 +1,4 @@
-export { APP_ROUTES } from "@/constants/app";
-export { ENV } from "@/constants/config";
+export { ENV } from "@/constants/envConfig";
 export type {
   FooterConfig,
   HeaderConfig,
@@ -15,3 +14,4 @@ export {
   resolveLayoutShellOptions,
 } from "@/constants/layoutConfig";
 export { PERFORMANCE_FLAGS, PERFORMANCE_THRESHOLDS } from "@/constants/performanceConfig";
+export { APP_ROUTES } from "@/constants/routeConstants";

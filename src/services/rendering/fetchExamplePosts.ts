@@ -1,4 +1,4 @@
-import { ENV } from "@/constants/config";
+import { ENV } from "@/constants/envConfig";
 import type { Post } from "@/types/postTypes";
 import type { ExamplePostsPayload, RenderingStrategyId } from "@/types/renderingTypes";
 

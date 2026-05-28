@@ -2,7 +2,7 @@ import { CartSummary } from "@/components/organisms/cart-summary/CartSummary";
 import { ProductCard } from "@/components/organisms/product-card/ProductCard";
 import { ProductPageTemplate } from "@/components/templates/product-page/ProductPageTemplate";
 import { internalClient } from "@/services/api-clients/internalClient";
-import { withErrorBoundary } from "@/utils/errors/boundary";
+import { withErrorBoundary } from "@/utils/errors/errorBoundary";
 
 import styles from "./ShopPage.module.scss";
 

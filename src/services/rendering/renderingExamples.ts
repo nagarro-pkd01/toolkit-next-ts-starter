@@ -1,4 +1,4 @@
-import { APP_ROUTES } from "@/constants/app";
+import { APP_ROUTES } from "@/constants/routeConstants";
 import type { RenderingExampleLink } from "@/types/renderingTypes";
 
 export const RENDERING_EXAMPLES: RenderingExampleLink[] = [

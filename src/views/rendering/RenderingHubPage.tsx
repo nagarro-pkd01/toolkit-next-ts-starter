@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { ProductPageTemplate } from "@/components/templates/product-page/ProductPageTemplate";
-import { APP_ROUTES } from "@/constants/app";
+import { APP_ROUTES } from "@/constants/routeConstants";
 import { RENDERING_EXAMPLES } from "@/services/rendering/renderingExamples";
 
 import styles from "./RenderingExamplePage.module.scss";

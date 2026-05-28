@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { SearchBar } from "@/components/molecules/search-bar/SearchBar";
+import { NavbarTools } from "@/components/organisms/navbar/NavbarTools";
 import type { HeaderConfig } from "@/constants/layoutConfig";
 
 import styles from "./Navbar.module.scss";
@@ -22,7 +23,10 @@ export const Navbar = ({ config }: NavbarProps) => {
           </Link>
         ))}
       </nav>
-      {config.showSearch ? <SearchBar /> : null}
+      <div className={styles.actions}>
+        {config.showSearch ? <SearchBar /> : null}
+        <NavbarTools />
+      </div>
     </header>
   );
 };
