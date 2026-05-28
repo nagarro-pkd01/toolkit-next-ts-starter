@@ -1,8 +1,8 @@
 {
   "commit": {
-    "sha": "26f8241f6f21bbbe50d98f842dbdf97f32e76060",
-    "shortSha": "26f8241",
-    "subject": "ci(release): add npm auth step using NPM_TOKEN for semantic-release"
+    "sha": "25b03f8ca41537b52ceef85eb915581f5e7d7218",
+    "shortSha": "25b03f8",
+    "subject": "feat: implemented rtl, jset, playwright, bundle analyzer"
   },
   "diff": {
     "clientCssBytes": 0,
@@ -17,5 +17,5 @@
     "totalClientBytes": 669811
   },
   "previousCommit": "26f8241",
-  "recordedAt": "2026-05-28T12:08:26.186Z"
+  "recordedAt": "2026-05-28T12:20:20.571Z"
 }
