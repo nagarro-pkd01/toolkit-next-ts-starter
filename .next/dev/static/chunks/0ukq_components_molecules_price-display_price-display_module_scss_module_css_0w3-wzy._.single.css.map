@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///turbopack:///[project]/src/components/molecules/price-display/price-display.module.scss"],"sourcesContent":[".price {\n  color: var(--color-primary);\n  font-weight: 700;\n}\n"],"names":[],"mappings":"AAAA"}}]
+}

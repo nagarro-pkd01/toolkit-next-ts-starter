@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///turbopack:///[project]/src/components/ui/button/button.module.scss"],"sourcesContent":[".button {\n  background: var(--color-primary);\n  border: 0;\n  border-radius: 8px;\n  color: white;\n  cursor: pointer;\n  font-weight: 600;\n  padding: 8px 14px;\n}\n"],"names":[],"mappings":"AAAA"}}]
+}

@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///turbopack:///[project]/src/components/ui/badge/badge.module.scss"],"sourcesContent":[".badge {\n  background: #e2e8f0;\n  border-radius: 9999px;\n  color: var(--color-text);\n  display: inline-flex;\n  font-size: 12px;\n  font-weight: 600;\n  padding: 4px 10px;\n}\n"],"names":[],"mappings":"AAAA"}}]
+}

@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///turbopack:///[project]/src/components/templates/product-page/product-page.module.scss"],"sourcesContent":[".container {\n  margin: 0 auto;\n  max-width: 1000px;\n  padding: 0 16px 24px;\n}\n"],"names":[],"mappings":"AAAA"}}]
+}

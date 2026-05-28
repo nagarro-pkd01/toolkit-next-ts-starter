@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///turbopack:///[project]/src/components/organisms/footer/footer.module.scss"],"sourcesContent":[".footer {\n  border-top: 1px solid var(--color-border);\n  color: var(--color-muted);\n  margin-top: 24px;\n  padding-top: 12px;\n}\n"],"names":[],"mappings":"AAAA"}}]
+}

@@ -1,0 +1,90 @@
+{
+  "name": "toolkit-next-ts-starter",
+  "version": "0.0.0-development",
+  "private": false,
+  "description": "Enterprise-ready Next.js + strict TypeScript starter with projen, Biome, release automation, and config-driven multi-client architecture.",
+  "keywords": [
+    "nextjs",
+    "starter",
+    "template",
+    "enterprise",
+    "typescript"
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin": {
+    "toolkit-next-ts-starter": "./scripts/create-starter.mjs"
+  },
+  "files": [
+    ".claude/skills.md",
+    ".cursor/skills",
+    ".editorconfig",
+    ".env.example",
+    ".github",
+    "lefthook.yml",
+    ".projen",
+    ".projenrc.js",
+    ".releaserc.json",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "README.md",
+    "biome.json",
+    "commitlint.config.cjs",
+    "docs",
+    "next-env.d.ts",
+    "next.config.ts",
+    "public",
+    "scripts/create-starter.mjs",
+    "src",
+    "tsconfig.json"
+  ],
+  "engines": {
+    "node": ">=20.17.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "next typegen && tsc --noEmit --pretty",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "validate": "npm run lint && npm run typecheck && npm run build",
+    "prepare": "lefthook install",
+    "projen": "projen",
+    "create:starter": "node ./scripts/create-starter.mjs",
+    "prepublishOnly": "npm run validate"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,mjs,cjs,json,md,yml,yaml}": [
+      "biome check --write --no-errors-on-unmatched --files-ignore-unknown=true"
+    ]
+  },
+  "dependencies": {
+    "next": "16.2.6",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.16",
+    "@commitlint/cli": "^20.5.3",
+    "@commitlint/config-conventional": "^20.5.3",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.6",
+    "@semantic-release/npm": "^12.0.2",
+    "@semantic-release/release-notes-generator": "^14.1.1",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "lefthook": "^1.13.6",
+    "lint-staged": "^16.4.0",
+    "projen": "^0.99.68",
+    "sass": "^1.99.0",
+    "semantic-release": "^24.2.9",
+    "typescript": "^5"
+  }
+}

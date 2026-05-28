@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///turbopack:///[project]/src/components/organisms/navbar/navbar.module.scss"],"sourcesContent":[".navbar {\n  align-items: center;\n  border-bottom: 1px solid var(--color-border);\n  display: flex;\n  gap: 16px;\n  justify-content: space-between;\n  padding: 12px 0;\n}\n"],"names":[],"mappings":"AAAA"}}]
+}
