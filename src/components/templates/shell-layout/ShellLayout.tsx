@@ -1,14 +1,12 @@
 import type { ReactNode } from "react";
-
-import { Footer } from "@/components/organisms/footer/Footer";
-import { Navbar } from "@/components/organisms/navbar/Navbar";
+import { Footer } from "@/components/organisms/footer/footer";
+import { Navbar } from "@/components/organisms/navbar/navbar";
 import {
   FOOTER_CONFIG,
   HEADER_CONFIG,
   type LayoutShellId,
   resolveLayoutShellOptions,
 } from "@/constants/layoutConfig";
-
 import styles from "./ShellLayout.module.scss";
 
 type ShellLayoutProps = {
