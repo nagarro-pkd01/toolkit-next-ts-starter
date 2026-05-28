@@ -39,7 +39,7 @@ jobs:
           NPM_TOKEN: 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
         run: |
           if [ -z "$NPM_TOKEN" ]; then
-            echo "\nERROR: NPM_TOKEN is not set. Please add the npm token to CI secrets.\n" >&2
+            echo "\nERROR: NPM_TOKEN is not set . Please add the npm token to CI secrets.\n" >&2
             exit 1
           fi
           echo "//registry.npmjs.org/:_authToken=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" > ~/.npmrc
