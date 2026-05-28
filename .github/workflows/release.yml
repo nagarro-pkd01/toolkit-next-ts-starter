@@ -36,7 +36,7 @@ jobs:
 
       - name: Authenticate to npm registry
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: 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
         run: |
           if [ -z "$NPM_TOKEN" ]; then
             echo "\nERROR: NPM_TOKEN is not set. Please add the npm token to CI secrets.\n" >&2
@@ -48,5 +48,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: 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
         run: npx semantic-release
