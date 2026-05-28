@@ -7,53 +7,57 @@ Enterprise-ready [Next.js](https://nextjs.org) starter with strict TypeScript, p
 - Projen project metadata and synthesis entrypoint (`.projenrc.js`)
 - Next.js App Router with strict TypeScript and typed routes
 - Route-grouped App Router with `providers.tsx`, `error.tsx`, and `not-found.tsx`
-- Feature-first `modules/` layer for business logic
-- Atomic design UI layer under `components/ui`, `molecules`, `organisms`, `templates`
-- Design tokens and theming foundations under `design-system/`
-- Dedicated API/service layer under `services/`
-- Global hooks, store, and shared `lib` error/logging utilities
+- Layered `src/` layout: `views`, `services`, `hooks`, `store`, `utils`, `constants`
+- Atomic design UI under `components/atoms`, `molecules`, `organisms`, `templates`
+- Design tokens and theme under `styles/design-system/`
+- Dedicated API/service layer under `services/` (including feature APIs such as `services/auth/`)
+- Zustand stores, shared hooks, and `utils/` for errors and logging
 - Biome for linting + formatting
 - Lefthook + lint-staged + commitlint for commit quality
 - Conventional commits and semantic-release automation
 - CI workflow and NPM publish workflow
 - Starter logging utility and documentation for operational consistency
 - Starter templates for Cursor and Claude skill workflows
+- Documented naming conventions (`docs/NAMING_CONVENTIONS.md`)
+- Rendering strategy examples with docs (`/rendering`, `docs/RENDERING_STRATEGIES.md`)
+- Jest + React Testing Library (unit/component) and Playwright (E2E) — `docs/TESTING.md`
 
 ## Project Structure
 
 ```
 src/
-  app/
+  app/                 # Next.js App Router (thin route re-exports)
     (auth)/
     (shop)/
     (dashboard)/
     api/
     providers.tsx
-  modules/
-    auth/
-    product/
-    cart/
-    user/
-    checkout/
+  views/               # Page views wired by app routes (not `pages/` — reserved by Next.js)
   components/
-    ui/
+    atoms/
     molecules/
     organisms/
     templates/
-  design-system/
-    tokens/
-    theme/
   services/
+    auth/
     http/
     api-clients/
   hooks/
-  store/
-  lib/
+  store/               # Zustand
+  utils/
     logger/
     errors/
+  constants/           # app routes + env config
   styles/
+    design-system/
+  assets/
   types/
 docs/
+  NAMING_CONVENTIONS.md
+  RENDERING_STRATEGIES.md
+  PERFORMANCE_MONITORING.md
+  BUNDLE_SIZE.md
+  TESTING.md
   BRANCHING_STRATEGY.md
   LOGGING.md
   CURSOR_SKILLS.md
@@ -70,6 +74,18 @@ npm run dev
 ```
 
 Open `http://localhost:3000`.
+
+### Rendering strategy examples
+
+Visit [http://localhost:3000/rendering](http://localhost:3000/rendering) for live demos of static (SSG), dynamic (SSR), ISR, streaming, and client rendering. See `docs/RENDERING_STRATEGIES.md` for when each approach is used in this starter and how to verify with `next build`.
+
+### Performance monitoring
+
+Core Web Vitals, long tasks, and memory growth heuristics run in the browser with in-app improvement tips when thresholds are exceeded. See `docs/PERFORMANCE_MONITORING.md`. Optional desktop alerts: `NEXT_PUBLIC_PERFORMANCE_NOTIFY=true`.
+
+### Bundle size on commit
+
+After each `git commit`, Lefthook runs a production build and prints client bundle size with a diff vs the previous commit. Logs are stored under `logs/bundle-size/`. See `docs/BUNDLE_SIZE.md`. Skip with `SKIP_BUNDLE_SIZE=1`.
 
 ### Bootstrap via npm (shared enterprise starter)
 
@@ -92,6 +108,8 @@ http://localhost:3000?client=globex
 ```bash
 npm run lint
 npm run typecheck
+npm run test
+npm run test:e2e
 npm run build
 npm run validate
 ```

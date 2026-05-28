@@ -1,4 +1,4 @@
-import { logger } from "@/lib/logger/logger";
+import { logger } from "@/utils/logger";
 
 type FetchLike = typeof fetch;
 

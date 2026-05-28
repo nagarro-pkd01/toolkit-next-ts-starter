@@ -1,0 +1,15 @@
+import { AuthLayout } from "@/components/templates/auth-layout/AuthLayout";
+import { LoginPanel } from "@/views/sign-in/LoginPanel";
+
+type SignInPageProps = {
+  clientKey?: string;
+};
+
+export default function SignInPage({ clientKey }: SignInPageProps) {
+  return (
+    <AuthLayout clientKey={clientKey}>
+      <h1>Sign In</h1>
+      <LoginPanel />
+    </AuthLayout>
+  );
+}

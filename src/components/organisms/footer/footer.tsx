@@ -1,5 +1,11 @@
-import styles from "./footer.module.scss";
+import type { FooterConfig } from "@/constants/layoutConfig";
 
-export const Footer = () => {
-  return <footer className={styles.footer}>2026 Toolkit Commerce. All rights reserved.</footer>;
+import styles from "./Footer.module.scss";
+
+type FooterProps = {
+  config: FooterConfig;
+};
+
+export const Footer = ({ config }: FooterProps) => {
+  return <footer className={styles.footer}>{config.copyright}</footer>;
 };

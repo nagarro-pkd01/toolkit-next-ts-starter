@@ -2,7 +2,15 @@
   "$schema": "https://biomejs.dev/schemas/2.4.16/schema.json",
   "files": {
     "ignoreUnknown": true,
-    "includes": ["**", "!**/.next", "!**/node_modules", "!**/.projen"]
+    "includes": [
+      "**",
+      "!**/.next",
+      "!**/node_modules",
+      "!**/.projen",
+      "!**/coverage",
+      "!**/playwright-report",
+      "!**/test-results"
+    ]
   },
   "formatter": {
     "enabled": true,

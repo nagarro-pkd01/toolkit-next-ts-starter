@@ -2,7 +2,9 @@
 
 import { useEffect } from "react";
 
-import { logger } from "@/lib/logger/logger";
+import { logger } from "@/utils/logger";
+
+import styles from "./GlobalError.module.scss";
 
 type ErrorPageProps = {
   error: Error & { digest?: string };
@@ -19,7 +21,7 @@ export default function GlobalError({ error, reset }: ErrorPageProps) {
   }, [error]);
 
   return (
-    <div style={{ padding: 24 }}>
+    <div className={styles.container}>
       <h2>Something went wrong !!!</h2>
       <button onClick={reset} type="button">
         Retry

@@ -1,7 +1,5 @@
 # Hooks
 
-Global reusable hooks live here.
+Shared React hooks used across pages and components.
 
-- `useTheme.ts`: theme mode helper
-- `useDebounce.ts`: debounced value utility
-- `useLogger.ts`: logger access hook
+Feature-specific hooks (for example `use-auth.ts`) live here; call into `services/` for API and business logic.

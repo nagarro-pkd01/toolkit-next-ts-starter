@@ -8,7 +8,14 @@ commit-msg:
     commitlint:
       run: npx --no -- commitlint --edit {1}
 
+post-commit:
+  commands:
+    bundle-size:
+      run: npm run analyze:bundle:build
+
 pre-push:
   commands:
+    test:
+      run: npm run test
     typecheck:
       run: npm run typecheck

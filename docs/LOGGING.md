@@ -8,7 +8,7 @@
 
 ## Logger Utility
 
-Use `src/lib/logger.ts`:
+Use `src/utils/logger.ts`:
 
 - `logger.info(message, context)`
 - `logger.warn(message, context)`

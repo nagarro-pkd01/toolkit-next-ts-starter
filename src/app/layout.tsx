@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Providers } from "@/app/providers";
-import "@/app/globals.scss";
+import "@/styles/globals.scss";
 
 export const metadata: Metadata = {
   title: "Toolkit Next TS Enterprise Starter",
-  description: "Routing-only App Router with feature-first module architecture",
+  description: "Next.js App Router with layered src architecture",
 };
 
 export default function RootLayout({

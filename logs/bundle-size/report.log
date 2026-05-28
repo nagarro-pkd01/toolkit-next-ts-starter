@@ -1,0 +1,10 @@
+[2026-05-28T12:08:25.887Z] commit 26f8241 — ci(release): add npm auth step using NPM_TOKEN for semantic-release
+  clientJs=645.4 KB (n/a (first run))
+  clientCss=8.8 KB (n/a (first run))
+  clientTotal=654.1 KB (n/a (first run))
+
+[2026-05-28T12:08:26.186Z] commit 26f8241 — ci(release): add npm auth step using NPM_TOKEN for semantic-release
+  clientJs=645.4 KB (+645.4 KB)
+  clientCss=8.8 KB (+8.8 KB)
+  clientTotal=654.1 KB (+654.1 KB)
+

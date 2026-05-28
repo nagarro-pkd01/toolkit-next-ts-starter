@@ -1,11 +1,12 @@
-import { AuthLayout } from "@/components/templates/auth-layout/auth-layout";
-import { LoginPanel } from "@/modules/auth";
+import { getClientKey } from "@/utils/layout/getClientKey";
+import SignInPage from "@/views/sign-in/SignInPage";
 
-export default function SignInPage() {
-  return (
-    <AuthLayout>
-      <h1>Sign In</h1>
-      <LoginPanel />
-    </AuthLayout>
-  );
+type SignInRouteProps = {
+  searchParams: Promise<{ client?: string | string[] }>;
+};
+
+export default async function Page({ searchParams }: SignInRouteProps) {
+  const clientKey = getClientKey(await searchParams);
+
+  return <SignInPage clientKey={clientKey} />;
 }
