@@ -34,6 +34,16 @@ jobs:
       - name: Verify project quality
         run: npm run validate
 
+      - name: Authenticate to npm registry
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          if [ -z "$NPM_TOKEN" ]; then
+            echo "\nERROR: NPM_TOKEN is not set. Please add the npm token to CI secrets.\n" >&2
+            exit 1
+          fi
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+
       - name: Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
