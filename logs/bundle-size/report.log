@@ -18,3 +18,13 @@
   clientCss=11.7 KB (+2.9 KB)
   clientTotal=682.4 KB (+28.3 KB)
 
+[2026-06-01T16:35:59.593Z] commit 8e7092a — feat: lighthouse added
+  clientJs=670.7 KB (±0 B)
+  clientCss=11.7 KB (±0 B)
+  clientTotal=682.4 KB (±0 B)
+
+[2026-06-01T16:38:55.181Z] commit d76c5c9 — chore: sync package-lock.json
+  clientJs=670.7 KB (±0 B)
+  clientCss=11.7 KB (±0 B)
+  clientTotal=682.4 KB (±0 B)
+
