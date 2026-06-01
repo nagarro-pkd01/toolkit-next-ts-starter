@@ -55,3 +55,8 @@ node_modules/
 /test-results
 /blob-report
 /playwright/.cache
+
+# Lighthouse CI
+.lighthouseci/
+.lhci/
+lhci-report*
