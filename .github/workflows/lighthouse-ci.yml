@@ -1,28 +1,35 @@
 name: Lighthouse CI
 
 on:
-  push:
-    branches: [ main, master ]
   pull_request:
-    branches: [ main, master ]
+    branches: [main, develop]
+  push:
+    branches: [main, develop]
 
 jobs:
   lhci:
     name: Run LHCI
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: 20
+          cache: npm
 
-      - name: Install dependencies
-        # Try a clean install first; fall back to `npm install` if lockfile mismatch occurs
-        run: npm ci || npm install --no-audit --no-fund
+      - name: Install
+        run: npm ci
 
-      - name: Run Lighthouse CI (autorun)
-        # Use npx without pinning to avoid ETARGET errors for unavailable versions
-        run: npx -y @lhci/cli autorun --config=.lighthouserc.js --upload.target=temporary-public-storage
+      - name: Run Lighthouse CI
+        run: npm run lhci
+
+      - name: Upload Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-reports
+          path: .lighthouseci

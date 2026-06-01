@@ -28,3 +28,18 @@
   clientCss=11.7 KB (±0 B)
   clientTotal=682.4 KB (±0 B)
 
+[2026-06-01T16:41:15.827Z] commit 460ddcf — feat: lighthouse added
+  clientJs=670.7 KB (±0 B)
+  clientCss=11.7 KB (±0 B)
+  clientTotal=682.4 KB (±0 B)
+
+[2026-06-01T16:43:16.264Z] commit 6e945af — ci: fallback to npm install and avoid pinning LHCI CLI
+  clientJs=670.7 KB (±0 B)
+  clientCss=11.7 KB (±0 B)
+  clientTotal=682.4 KB (±0 B)
+
+[2026-06-01T16:52:34.660Z] commit 6e945af — ci: fallback to npm install and avoid pinning LHCI CLI
+  clientJs=670.7 KB (±0 B)
+  clientCss=11.7 KB (±0 B)
+  clientTotal=682.4 KB (±0 B)
+

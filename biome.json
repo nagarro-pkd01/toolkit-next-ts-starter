@@ -9,7 +9,8 @@
       "!**/.projen",
       "!**/coverage",
       "!**/playwright-report",
-      "!**/test-results"
+      "!**/test-results",
+      "!**/.lighthouseci"
     ]
   },
   "formatter": {

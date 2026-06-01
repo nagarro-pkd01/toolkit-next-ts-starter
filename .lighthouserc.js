@@ -14,8 +14,8 @@ module.exports = {
         "http://localhost:3000/rendering/isr",
         "http://localhost:3000/rendering/streaming",
       ],
-      startServerCommand: "npm run build && PORT=3000 npm run start",
-      startServerReadyPattern: "listening|ready|started|Compiled successfully",
+      startServerCommand: "npm run build && npm run start",
+      startServerReadyPattern: "Ready",
       startServerReadyTimeout: 120000,
     },
     upload: {
