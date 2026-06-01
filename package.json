@@ -1,6 +1,6 @@
 {
   "name": "toolkit-next-ts-starter",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": false,
   "description": "Enterprise-ready Next.js + strict TypeScript starter with projen, Biome, release automation, and config-driven multi-client architecture.",
   "keywords": [
