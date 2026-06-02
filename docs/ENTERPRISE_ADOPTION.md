@@ -6,7 +6,8 @@ Use this checklist when rolling out the starter across teams.
 
 - Define ownership for starter upgrades and dependency policy
 - Enforce branch protection and required status checks
-- Require conventional commits in all repos initialized from this starter
+- Require conventional commits in all repos initialized from this starter (`docs/COMMIT_MESSAGES.md`, commitlint + CI)
+- Enable GitHub branch protection on `main` per `docs/BRANCHING_STRATEGY.md` (hooks alone are not sufficient)
 
 ## Security and Compliance
 

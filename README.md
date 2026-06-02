@@ -103,6 +103,11 @@ http://localhost:3000?client=acme
 http://localhost:3000?client=globex
 ```
 
+## Security
+
+- **Snyk** (npm dependencies): CI runs on PRs/pushes when `SNYK_TOKEN` is set in repository secrets. Locally: `SNYK_TOKEN=<token> npm run security:snyk` (or `snyk auth` once).
+- **Trivy** (filesystem): `npm run security:scan` / `security:critical` — no account required.
+
 ## Quality Gates
 
 ```bash
@@ -117,11 +122,11 @@ npm run validate
 ## Git and Commit Workflow
 
 - Branch naming strategy: see `docs/BRANCHING_STRATEGY.md`
-- Conventional commits are validated with `commitlint`
+- Commit message rules: see `docs/COMMIT_MESSAGES.md` (enforced by commitlint + CI)
 - Hooks:
   - pre-commit: `lint-staged`
   - commit-msg: `commitlint`
-  - pre-push: `npm run typecheck`
+  - pre-push: block direct push to `main`, then `npm run test` and `npm run typecheck`
 
 ## Release + NPM Publishing
 
@@ -131,6 +136,7 @@ npm run validate
 - Enterprise rollout checklist: `docs/ENTERPRISE_ADOPTION.md`
 - Required secrets:
   - `NPM_TOKEN`
+  - `SNYK_TOKEN` (optional; enables `.github/workflows/snyk.yml`)
   - `GITHUB_TOKEN` (provided by GitHub Actions runtime)
 
 Commits on `main` trigger automated versioning, changelog updates, GitHub release, and NPM publish.
