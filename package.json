@@ -1,6 +1,6 @@
 {
   "name": "toolkit-next-ts-starter",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "private": false,
   "description": "Enterprise-ready Next.js + strict TypeScript starter with projen, Biome, release automation, and config-driven multi-client architecture.",
   "keywords": [
@@ -38,7 +38,9 @@
     "public",
     "scripts/create-starter.mjs",
     "src",
-    "tsconfig.json"
+    "tsconfig.json",
+    "vitest.config.mts",
+    "vitest.setup.ts"
   ],
   "engines": {
     "node": ">=20.17.0"
@@ -51,9 +53,9 @@
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "format": "biome format --write .",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "validate": "npm run lint && npm run typecheck && npm run test && npm run build",
@@ -66,7 +68,13 @@
     "prepublishOnly": "npm run validate",
     "lhci": "npx -y @lhci/cli autorun --config=.lighthouserc.js --upload.target=temporary-public-storage",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "security:scan": "trivy fs .",
+    "security:json": "trivy fs --format json --output reports/trivy-report.json .",
+    "security:sarif": "trivy fs --format sarif --output reports/trivy-report.sarif .",
+    "security:critical": "trivy fs --severity HIGH,CRITICAL --exit-code 1 .",
+    "security:all": "npm run security:json && npm run security:sarif",
+    "security:html": "trivy fs --format template --template @contrib/html.tpl --output reports/trivy-report.html ."
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,mjs,cjs,json,md,yml,yaml}": [
@@ -99,12 +107,11 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
-    "@types/jest": "^30.0.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "jest": "^30.4.2",
-    "jest-environment-jsdom": "^30.4.1",
+    "@vitejs/plugin-react": "^6.0.2",
+    "jsdom": "^29.1.1",
     "lefthook": "^1.13.6",
     "lint-staged": "^16.4.0",
     "projen": "^0.99.68",
