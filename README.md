@@ -105,7 +105,7 @@ http://localhost:3000?client=globex
 
 ## Security
 
-- **Snyk** (npm dependencies): CI runs on PRs/pushes when `SNYK_TOKEN` is set in repository secrets. Locally: `SNYK_TOKEN=<token> npm run security:snyk` (or `snyk auth` once).
+- **Snyk** (npm dependencies): CI runs on PRs/pushes when `SNYK_TOKEN` is set in repository secrets. Pre-push runs when `SNYK_TOKEN` is set or `snyk auth` has been run (`SKIP_SNYK=1` to skip). Ad hoc: `npm run security:snyk`.
 - **Trivy** (filesystem): `npm run security:scan` / `security:critical` — no account required.
 
 ## Quality Gates
@@ -126,7 +126,7 @@ npm run validate
 - Hooks:
   - pre-commit: `lint-staged`
   - commit-msg: `commitlint`
-  - pre-push: block direct push to `main`, then `npm run test` and `npm run typecheck`
+  - pre-push: block direct push to `main`, Snyk (when configured), `npm run test`, `npm run typecheck`
 
 ## Release + NPM Publishing
 
