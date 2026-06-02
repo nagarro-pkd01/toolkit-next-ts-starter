@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { describe, expect, it, vi } from "vitest";
 
 import { Button } from "@/components/atoms/button/Button";
 
@@ -12,7 +13,7 @@ describe("Button", () => {
 
   it("calls onClick when clicked", async () => {
     const user = userEvent.setup();
-    const handleClick = jest.fn();
+    const handleClick = vi.fn();
 
     render(<Button onClick={handleClick}>Submit</Button>);
 

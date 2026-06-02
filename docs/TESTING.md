@@ -1,25 +1,25 @@
 # Testing
 
-This starter uses **Jest + React Testing Library (RTL)** for unit/component tests and **Playwright** for end-to-end (E2E) tests.
+This starter uses **Vitest + React Testing Library (RTL)** for unit/component tests and **Playwright** for end-to-end (E2E) tests.
 
 ## Commands
 
 | Command | Description |
 |---------|-------------|
-| `npm run test` | Run Jest unit/component tests |
-| `npm run test:watch` | Jest watch mode |
-| `npm run test:coverage` | Jest with coverage report |
+| `npm run test` | Run Vitest unit/component tests |
+| `npm run test:watch` | Vitest watch mode |
+| `npm run test:coverage` | Vitest with coverage report |
 | `npm run test:e2e` | Playwright E2E (starts `next start` via config) |
 | `npm run test:e2e:ui` | Playwright UI mode (local debugging) |
 | `npm run validate` | lint + typecheck + **test** + build |
 
-## Jest + RTL
+## Vitest + RTL
 
-- **Config:** `jest.config.ts` (uses `next/jest` for TS, `@/` aliases, CSS modules)
-- **Setup:** `jest.setup.ts` (`@testing-library/jest-dom`, `matchMedia` mock)
+- **Config:** `vitest.config.mts` (uses Vite React plugin, `@/` aliases, CSS modules)
+- **Setup:** `vitest.setup.ts` (`@testing-library/jest-dom/vitest`, `matchMedia` mock)
 - **Location:** colocated `*.test.ts(x)` next to source (see `Button.test.tsx`, `rateMetric.test.ts`)
 
-### What to test with Jest
+### What to test with Vitest
 
 - Presentational components (atoms, molecules)
 - Pure utilities and services (no DOM)

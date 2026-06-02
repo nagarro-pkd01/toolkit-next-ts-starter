@@ -20,7 +20,7 @@ Enterprise-ready [Next.js](https://nextjs.org) starter with strict TypeScript, p
 - Starter templates for Cursor and Claude skill workflows
 - Documented naming conventions (`docs/NAMING_CONVENTIONS.md`)
 - Rendering strategy examples with docs (`/rendering`, `docs/RENDERING_STRATEGIES.md`)
-- Jest + React Testing Library (unit/component) and Playwright (E2E) — `docs/TESTING.md`
+- Vitest + React Testing Library (unit/component) and Playwright (E2E) - `docs/TESTING.md`
 
 ## Project Structure
 
