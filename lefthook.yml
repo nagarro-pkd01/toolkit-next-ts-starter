@@ -17,8 +17,6 @@ pre-push:
   commands:
     protect-main:
       run: node ./scripts/blockProtectedBranchPush.mjs
-    snyk:
-      run: node ./scripts/runSnykPrePush.mjs
     test:
       run: npm run test
     typecheck:

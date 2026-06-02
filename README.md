@@ -105,8 +105,7 @@ http://localhost:3000?client=globex
 
 ## Security
 
-- **Snyk** (npm dependencies): CI runs on PRs/pushes when `SNYK_TOKEN` is set in repository secrets. Pre-push runs when `SNYK_TOKEN` is set or `snyk auth` has been run (`SKIP_SNYK=1` to skip). Ad hoc: `npm run security:snyk`.
-- **Trivy** (filesystem): `npm run security:scan` / `security:critical` — no account required.
+Trivy filesystem scans (no account required): `npm run security:scan`, `npm run security:critical`.
 
 ## Quality Gates
 
@@ -126,7 +125,7 @@ npm run validate
 - Hooks:
   - pre-commit: `lint-staged`
   - commit-msg: `commitlint`
-  - pre-push: block direct push to `main`, Snyk (when configured), `npm run test`, `npm run typecheck`
+  - pre-push: block direct push to `main`, `npm run test`, `npm run typecheck`
 
 ## Release + NPM Publishing
 
@@ -136,7 +135,6 @@ npm run validate
 - Enterprise rollout checklist: `docs/ENTERPRISE_ADOPTION.md`
 - Required secrets:
   - `NPM_TOKEN`
-  - `SNYK_TOKEN` (optional; enables `.github/workflows/snyk.yml`)
   - `GITHUB_TOKEN` (provided by GitHub Actions runtime)
 
 Commits on `main` trigger automated versioning, changelog updates, GitHub release, and NPM publish.
