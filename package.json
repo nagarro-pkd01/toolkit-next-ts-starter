@@ -52,6 +52,7 @@
     "typecheck": "next typegen && tsc --noEmit --pretty",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
+    "lint:commits": "commitlint --last",
     "format": "biome format --write .",
     "test": "vitest run",
     "test:watch": "vitest",
