@@ -1,2 +1,2 @@
-export { postsService } from "@/services/posts/postsService";
-export { usePosts } from "@/services/posts/usePosts";
+export { postsService } from "@/services/posts/posts-service";
+export { usePosts } from "@/services/posts/use-posts";

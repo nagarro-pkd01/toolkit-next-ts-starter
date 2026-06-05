@@ -1,4 +1,4 @@
-import { fetchExamplePosts } from "@/services/rendering/fetchExamplePosts";
+import { fetchExamplePosts } from "@/services/rendering/fetch-examples-posts";
 
 export const dynamic = "force-dynamic";
 

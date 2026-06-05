@@ -5,8 +5,8 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import type { ReactNode } from "react";
 import { useRef } from "react";
 
-import { PerformanceMonitorProvider } from "@/components/organisms/performance-monitor/PerformanceMonitorProvider";
-import { ThemeProvider } from "@/components/organisms/theme-provider/ThemeProvider";
+import { PerformanceMonitorProvider } from "@/components/organisms/PerformanceMonitor/PerformanceMonitorProvider";
+import { ThemeProvider } from "@/components/organisms/ThemeProvider/ThemeProvider";
 
 type ProvidersProps = {
   children: ReactNode;

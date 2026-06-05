@@ -1,4 +1,4 @@
-export { Badge } from "@/components/atoms/badge/Badge";
-export { Button } from "@/components/atoms/button/Button";
-export { Icon } from "@/components/atoms/icon/Icon";
-export { Input } from "@/components/atoms/input/Input";
+export { Badge } from "@/components/atoms/Badge/Badge";
+export { Button } from "@/components/atoms/Button/Button";
+export { Icon } from "@/components/atoms/Icon/Icon";
+export { Input } from "@/components/atoms/Input/Input";

@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
-import { Button } from "@/components/atoms/button/Button";
+import { Button } from "@/components/atoms/Button/Button";
 
 describe("Button", () => {
   it("renders children", () => {

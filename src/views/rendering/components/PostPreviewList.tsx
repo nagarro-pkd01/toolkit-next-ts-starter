@@ -1,4 +1,4 @@
-import type { Post } from "@/types/postTypes";
+import type { Post } from "@/types/post-types";
 
 import styles from "./PostPreviewList.module.scss";
 

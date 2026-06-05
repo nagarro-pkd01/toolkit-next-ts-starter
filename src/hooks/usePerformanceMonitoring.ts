@@ -3,8 +3,8 @@
 import { useEffect, useRef } from "react";
 
 import { PERFORMANCE_FLAGS } from "@/constants/performanceConfig";
-import { usePerformanceStore } from "@/store/performanceStore";
-import { PerformanceMonitor } from "@/utils/performance/performanceMonitor";
+import { usePerformanceStore } from "@/store/performance-store";
+import { PerformanceMonitor } from "@/utils/performance/performance-monitor";
 
 export const usePerformanceMonitoring = (): void => {
   const addAlert = usePerformanceStore((state) => state.addAlert);

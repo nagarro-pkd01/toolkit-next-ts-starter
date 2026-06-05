@@ -1,6 +1,6 @@
 export const dynamic = "force-dynamic";
 
-import { getClientKey } from "@/utils/layout/getClientKey";
+import { getClientKey } from "@/utils/layout/get-client-key";
 import DashboardPage from "@/views/dashboard/DashboardPage";
 
 type DashboardRouteProps = {

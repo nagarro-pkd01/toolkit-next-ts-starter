@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import type { ExamplePostsPayload } from "@/types/renderingTypes";
+import type { ExamplePostsPayload } from "@/types/rendering-types";
 import { PostPreviewList } from "@/views/rendering/components/PostPreviewList";
 import { PostsSkeleton } from "@/views/rendering/components/PostsSkeleton";
 

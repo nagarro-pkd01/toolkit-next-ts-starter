@@ -1,4 +1,4 @@
-import { fetchExamplePosts } from "@/services/rendering/fetchExamplePosts";
+import { fetchExamplePosts } from "@/services/rendering/fetch-examples-posts";
 import { delay } from "@/utils/rendering/delay";
 import { PostPreviewList } from "@/views/rendering/components/PostPreviewList";
 
