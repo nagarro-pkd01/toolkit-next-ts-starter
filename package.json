@@ -2,7 +2,7 @@
   "name": "toolkit-next-ts-starter",
   "version": "0.0.2",
   "private": false,
-  "description": "Enterprise-ready Next.js + strict TypeScript starter with projen, Biome, release automation, and config-driven multi-client architecture.",
+  "description": "Enterprise-ready Next.js + strict TypeScript starter with projen, ESLint + Prettier, release automation, and config-driven multi-client architecture.",
   "keywords": [
     "nextjs",
     "starter",
@@ -30,7 +30,9 @@
     "AGENTS.md",
     "CLAUDE.md",
     "README.md",
-    "biome.json",
+    "eslint.config.mjs",
+    "prettier.config.cjs",
+    ".prettierignore",
     "commitlint.config.cjs",
     "docs",
     "next-env.d.ts",
@@ -50,9 +52,10 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "next typegen && tsc --noEmit --pretty",
-    "lint": "biome check .",
-    "lint:fix": "biome check --write .",
-    "format": "biome format --write .",
+    "lint": "eslint . --max-warnings=0",
+    "lint:fix": "eslint . --fix --max-warnings=0",
+    "lint:commits": "commitlint --last",
+    "format": "prettier --write .",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
@@ -75,8 +78,11 @@
     "security:html": "trivy fs --format template --template @contrib/html.tpl --output reports/trivy-report.html ."
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,mjs,cjs,json,md,yml,yaml}": [
-      "biome check --write --no-errors-on-unmatched --files-ignore-unknown=true"
+    "*.{js,jsx,ts,tsx,mjs,cjs}": [
+      "eslint --fix --max-warnings=0"
+    ],
+    "*.{json,md,yml,yaml,css,scss}": [
+      "prettier --write"
     ]
   },
   "dependencies": {
@@ -91,7 +97,8 @@
     "@tanstack/react-query-devtools": "^5.0.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.4.16",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
     "@commitlint/cli": "^20.5.3",
     "@commitlint/config-conventional": "^20.5.3",
     "@playwright/test": "^1.60.0",
@@ -113,7 +120,12 @@
     "jsdom": "^29.1.1",
     "lefthook": "^1.13.6",
     "lint-staged": "^16.4.0",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "^16.2.6",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
     "projen": "^0.99.68",
+    "prettier": "^3.3.3",
     "sass": "^1.99.0",
     "semantic-release": "^24.2.9",
     "typescript": "^5",
