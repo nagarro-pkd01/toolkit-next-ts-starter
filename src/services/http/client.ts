@@ -1,5 +1,5 @@
 import { withInterceptors } from "@/services/http/interceptors";
-import { AppError } from "@/utils/errors/AppError";
+import { AppError } from "@/utils/errors/app-error";
 
 type HttpClientConfig = {
   baseUrl: string;

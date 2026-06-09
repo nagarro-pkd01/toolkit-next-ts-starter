@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Providers } from "@/app/providers";
 import "@/styles/globals.scss";
-import { themeInitScript } from "@/utils/theme/themeInitScript";
+import { themeInitScript } from "@/utils/theme/theme-init-script";
 
 export const metadata: Metadata = {
   title: "Toolkit Next TS Enterprise Starter",

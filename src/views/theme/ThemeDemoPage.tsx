@@ -1,4 +1,4 @@
-import { ProductPageTemplate } from "@/components/templates/product-page/ProductPageTemplate";
+import { ProductPageTemplate } from "@/components/templates/ProductPage/ProductPageTemplate";
 import { ThemeDemoContent } from "@/views/theme/ThemeDemoContent";
 
 export default function ThemeDemoPage() {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useThemeContext } from "@/components/organisms/theme-provider/ThemeProvider";
+import { useThemeContext } from "@/components/organisms/ThemeProvider/ThemeProvider";
 
 export const useTheme = () => {
   const { preference, resolvedTheme, setPreference, toggleTheme } = useThemeContext();

@@ -1,4 +1,4 @@
-import type { RenderingStrategyId } from "@/types/renderingTypes";
+import type { RenderingStrategyId } from "@/types/rendering-types";
 
 import styles from "./RenderingMeta.module.scss";
 

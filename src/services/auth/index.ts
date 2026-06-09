@@ -1,4 +1,4 @@
-export { authService } from "@/services/auth/authService";
-export type { AuthUser } from "@/services/auth/authTypes";
-export { loginApi } from "@/services/auth/loginApi";
-export { useLogin } from "@/services/auth/useLogin";
+export { authService } from "@/services/auth/auth-service";
+export type { AuthUser } from "@/services/auth/auth-types";
+export { loginApi } from "@/services/auth/login-api";
+export { useLogin } from "@/services/auth/use-login";

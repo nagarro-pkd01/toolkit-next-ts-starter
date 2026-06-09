@@ -1,4 +1,4 @@
-import { getClientKey } from "@/utils/layout/getClientKey";
+import { getClientKey } from "@/utils/layout/get-client-key";
 import SignInPage from "@/views/sign-in/SignInPage";
 
 type SignInRouteProps = {

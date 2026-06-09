@@ -60,3 +60,6 @@ node_modules/
 .lighthouseci/
 .lhci/
 lhci-report*
+
+*storybook.log
+storybook-static

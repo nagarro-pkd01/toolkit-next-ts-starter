@@ -1,4 +1,4 @@
-import type { PerformanceReportPayload } from "@/types/performanceTypes";
+import type { PerformanceReportPayload } from "@/types/performance-types";
 import { logger } from "@/utils/logger";
 
 export const dynamic = "force-dynamic";

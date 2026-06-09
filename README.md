@@ -103,6 +103,10 @@ http://localhost:3000?client=acme
 http://localhost:3000?client=globex
 ```
 
+## Security
+
+Trivy filesystem scans (no account required): `npm run security:scan`, `npm run security:critical`.
+
 ## Quality Gates
 
 ```bash
@@ -117,11 +121,11 @@ npm run validate
 ## Git and Commit Workflow
 
 - Branch naming strategy: see `docs/BRANCHING_STRATEGY.md`
-- Conventional commits are validated with `commitlint`
+- Commit message rules: see `docs/COMMIT_MESSAGES.md` (enforced by commitlint + CI)
 - Hooks:
   - pre-commit: `lint-staged`
   - commit-msg: `commitlint`
-  - pre-push: `npm run typecheck`
+  - pre-push: block direct push to `main`, `npm run test`, `npm run typecheck`
 
 ## Release + NPM Publishing
 
