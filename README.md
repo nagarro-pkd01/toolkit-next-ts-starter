@@ -1,6 +1,6 @@
 # Toolkit Next TS Starter
 
-Enterprise-ready [Next.js](https://nextjs.org) starter with strict TypeScript, projen metadata, Biome, git hooks, CI, and release automation.
+Enterprise-ready [Next.js](https://nextjs.org) starter with strict TypeScript, projen metadata, ESLint + Prettier, git hooks, CI, and release automation.
 
 ## Included Defaults
 
@@ -12,7 +12,7 @@ Enterprise-ready [Next.js](https://nextjs.org) starter with strict TypeScript, p
 - Design tokens and theme under `styles/design-system/`
 - Dedicated API/service layer under `services/` (including feature APIs such as `services/auth/`)
 - Zustand stores, shared hooks, and `utils/` for errors and logging
-- Biome for linting + formatting
+- ESLint + Prettier for linting + formatting
 - Lefthook + lint-staged + commitlint for commit quality
 - Conventional commits and semantic-release automation
 - CI workflow and NPM publish workflow

@@ -21,19 +21,19 @@ Rules are enforced by **commitlint** (Lefthook `commit-msg` hook and CI on pull 
 
 ## Types
 
-| Type | When to use | Release impact |
-|------|-------------|----------------|
-| `feat` | New user-facing behavior | Minor |
-| `fix` | Bug fix | Patch |
-| `docs` | Documentation only | None |
-| `style` | Formatting, no logic change | None |
-| `refactor` | Code change, not feat/fix | None |
-| `perf` | Performance improvement | Patch |
-| `test` | Tests only | None |
-| `build` | Build system or dependencies | None |
-| `ci` | CI configuration | None |
-| `chore` | Maintenance (tooling, meta) | None |
-| `revert` | Reverts a prior commit | Depends on revert |
+| Type       | When to use                  | Release impact    |
+| ---------- | ---------------------------- | ----------------- |
+| `feat`     | New user-facing behavior     | Minor             |
+| `fix`      | Bug fix                      | Patch             |
+| `docs`     | Documentation only           | None              |
+| `style`    | Formatting, no logic change  | None              |
+| `refactor` | Code change, not feat/fix    | None              |
+| `perf`     | Performance improvement      | Patch             |
+| `test`     | Tests only                   | None              |
+| `build`    | Build system or dependencies | None              |
+| `ci`       | CI configuration             | None              |
+| `chore`    | Maintenance (tooling, meta)  | None              |
+| `revert`   | Reverts a prior commit       | Depends on revert |
 
 ## Scopes (optional)
 

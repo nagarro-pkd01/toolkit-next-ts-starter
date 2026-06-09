@@ -23,10 +23,10 @@
 
 **Do not push directly to `main`.** All changes land via pull request merge.
 
-| Layer | What it does |
-|-------|----------------|
-| Local hook | Lefthook `pre-push` blocks `git push` to `origin/main` (see `scripts/blockProtectedBranchPush.mjs`) |
-| GitHub (required) | Branch protection / ruleset on `main` so the remote rejects direct pushes even with `--no-verify` |
+| Layer             | What it does                                                                                        |
+| ----------------- | --------------------------------------------------------------------------------------------------- |
+| Local hook        | Lefthook `pre-push` blocks `git push` to `origin/main` (see `scripts/blockProtectedBranchPush.mjs`) |
+| GitHub (required) | Branch protection / ruleset on `main` so the remote rejects direct pushes even with `--no-verify`   |
 
 ### GitHub branch protection (set on each repo)
 
