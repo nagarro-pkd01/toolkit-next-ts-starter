@@ -50,10 +50,10 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     }
 
     const media = window.matchMedia("(prefers-color-scheme: dark)");
-    const onChange = () => syncResolvedTheme("system");
+    const handleChange = () => syncResolvedTheme("system");
 
-    media.addEventListener("change", onChange);
-    return () => media.removeEventListener("change", onChange);
+    media.addEventListener("change", handleChange);
+    return () => media.removeEventListener("change", handleChange);
   }, [preference, syncResolvedTheme]);
 
   const setPreference = useCallback(

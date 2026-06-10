@@ -1,8 +1,8 @@
 "use client";
 
 import { Button } from "@/components/atoms/Button/Button";
-import { useThemeContext } from "@/components/organisms/ThemeProvider/ThemeProvider";
 import type { ThemePreference } from "@/constants/themeConstants";
+import { useThemeContext } from "@/providers/ThemeProvider";
 import { trackEvent } from "@/services/analytics/google-analytics";
 
 import styles from "./ThemeToggle.module.scss";
