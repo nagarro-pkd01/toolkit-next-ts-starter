@@ -1,0 +1,45 @@
+[2026-05-28T12:08:25.887Z] commit 26f8241 — ci(release): add npm auth step using NPM_TOKEN for semantic-release
+  clientJs=645.4 KB (n/a (first run))
+  clientCss=8.8 KB (n/a (first run))
+  clientTotal=654.1 KB (n/a (first run))
+
+[2026-05-28T12:08:26.186Z] commit 26f8241 — ci(release): add npm auth step using NPM_TOKEN for semantic-release
+  clientJs=645.4 KB (+645.4 KB)
+  clientCss=8.8 KB (+8.8 KB)
+  clientTotal=654.1 KB (+654.1 KB)
+
+[2026-05-28T12:20:20.571Z] commit 25b03f8 — feat: implemented rtl, jset, playwright, bundle analyzer
+  clientJs=645.4 KB (±0 B)
+  clientCss=8.8 KB (±0 B)
+  clientTotal=654.1 KB (±0 B)
+
+[2026-05-28T12:46:05.747Z] commit 3d52f71 — 0.0.0
+  clientJs=670.7 KB (+25.3 KB)
+  clientCss=11.7 KB (+2.9 KB)
+  clientTotal=682.4 KB (+28.3 KB)
+
+[2026-06-01T16:35:59.593Z] commit 8e7092a — feat: lighthouse added
+  clientJs=670.7 KB (±0 B)
+  clientCss=11.7 KB (±0 B)
+  clientTotal=682.4 KB (±0 B)
+
+[2026-06-01T16:38:55.181Z] commit d76c5c9 — chore: sync package-lock.json
+  clientJs=670.7 KB (±0 B)
+  clientCss=11.7 KB (±0 B)
+  clientTotal=682.4 KB (±0 B)
+
+[2026-06-01T16:41:15.827Z] commit 460ddcf — feat: lighthouse added
+  clientJs=670.7 KB (±0 B)
+  clientCss=11.7 KB (±0 B)
+  clientTotal=682.4 KB (±0 B)
+
+[2026-06-01T16:43:16.264Z] commit 6e945af — ci: fallback to npm install and avoid pinning LHCI CLI
+  clientJs=670.7 KB (±0 B)
+  clientCss=11.7 KB (±0 B)
+  clientTotal=682.4 KB (±0 B)
+
+[2026-06-01T16:52:34.660Z] commit 6e945af — ci: fallback to npm install and avoid pinning LHCI CLI
+  clientJs=670.7 KB (±0 B)
+  clientCss=11.7 KB (±0 B)
+  clientTotal=682.4 KB (±0 B)
+
