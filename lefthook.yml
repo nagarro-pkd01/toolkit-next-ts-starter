@@ -1,0 +1,23 @@
+pre-commit:
+  commands:
+    lint-staged:
+      run: npx lint-staged
+
+commit-msg:
+  commands:
+    commitlint:
+      run: npx --no -- commitlint --edit {1}
+
+post-commit:
+  commands:
+    bundle-size:
+      run: npm run analyze:bundle:build
+
+pre-push:
+  commands:
+    protect-main:
+      run: node ./scripts/blockProtectedBranchPush.mjs
+    test:
+      run: npm run test
+    typecheck:
+      run: npm run typecheck
