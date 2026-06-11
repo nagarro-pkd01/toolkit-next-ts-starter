@@ -26,7 +26,7 @@ const requestBrowserNotification = async (alert: PerformanceAlert): Promise<void
 };
 
 export const notifyPerformanceIssue = (alert: PerformanceAlert): void => {
-  logger.warn("performance.threshold_exceeded", {
+  logger.warn("performance.threshold_exceeded", "Performance threshold exceeded", {
     metric: alert.metric,
     rating: alert.rating,
     recommendations: alert.recommendations,

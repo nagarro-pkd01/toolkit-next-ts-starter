@@ -4,7 +4,11 @@ import { AppError } from "./app-error";
 
 export const errorHandler = (error: unknown, context: Record<string, unknown> = {}): AppError => {
   if (error instanceof AppError) {
-    logger.error(error.message, { ...context, ...error.context, code: error.code });
+    logger.error("application.error", error.message, error, {
+      ...context,
+      ...error.context,
+      code: error.code,
+    });
     return error;
   }
 
@@ -13,7 +17,7 @@ export const errorHandler = (error: unknown, context: Record<string, unknown> = 
       code: "UNEXPECTED_ERROR",
       context: { ...context, name: error.name },
     });
-    logger.error(normalized.message, normalized.context);
+    logger.error("application.unexpected_error", normalized.message, error, normalized.context);
     return normalized;
   }
 
@@ -21,6 +25,6 @@ export const errorHandler = (error: unknown, context: Record<string, unknown> = 
     code: "UNKNOWN_ERROR",
     context: { ...context, error },
   });
-  logger.error(normalized.message, normalized.context);
+  logger.error("application.unknown_error", normalized.message, error, normalized.context);
   return normalized;
 };

@@ -8,7 +8,7 @@ import type {
   PerformanceReportPayload,
 } from "@/types/performance-types";
 import { createPerformanceAlert } from "@/utils/performance/create-performance-alert";
-import { notifyPerformanceIssue } from "@/utils/performance/notify-perfomance-issue";
+import { notifyPerformanceIssue } from "@/utils/performance/notify-performance-issue";
 import { rateMetric } from "@/utils/performance/rate-metric";
 import { reportPerformance } from "@/utils/performance/report-performance";
 

@@ -2,18 +2,48 @@ import { transports } from "@/utils/logger/transports";
 
 type LogContext = Record<string, unknown>;
 
-const push = (level: "ERROR" | "INFO" | "WARN", message: string, context: LogContext) => {
-  transports.console({ context, level, message });
+const serializeError = (error: unknown) => {
+  if (!(error instanceof Error)) {
+    return undefined;
+  }
+
+  return {
+    message: error.message,
+    name: error.name,
+    stack: error.stack,
+  };
+};
+
+const push = (
+  level: "ERROR" | "INFO" | "WARN",
+  event: string,
+  message: string,
+  context: LogContext,
+  error?: unknown,
+) => {
+  try {
+    transports.console({
+      context,
+      error: serializeError(error),
+      event,
+      level,
+      message,
+      source: typeof window === "undefined" ? "server" : "client",
+      timestamp: new Date().toISOString(),
+    });
+  } catch {
+    // Logging must never interrupt application behavior.
+  }
 };
 
 export const logger = {
-  error(message: string, context: LogContext = {}) {
-    push("ERROR", message, context);
+  error(event: string, message: string, error: unknown, context: LogContext = {}) {
+    push("ERROR", event, message, context, error);
   },
-  info(message: string, context: LogContext = {}) {
-    push("INFO", message, context);
+  info(event: string, message: string, context: LogContext = {}) {
+    push("INFO", event, message, context);
   },
-  warn(message: string, context: LogContext = {}) {
-    push("WARN", message, context);
+  warn(event: string, message: string, context: LogContext = {}) {
+    push("WARN", event, message, context);
   },
 };

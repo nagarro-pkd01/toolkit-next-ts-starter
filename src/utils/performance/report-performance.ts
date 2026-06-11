@@ -3,7 +3,7 @@ import type { PerformanceReportPayload } from "@/types/performance-types";
 import { logger } from "@/utils/logger";
 
 export const reportPerformance = async (payload: PerformanceReportPayload): Promise<void> => {
-  logger.info("performance.report", {
+  logger.info("performance.report", "Performance report created", {
     alertCount: payload.alerts.length,
     metricCount: payload.metrics.length,
     path: payload.path,
@@ -21,8 +21,8 @@ export const reportPerformance = async (payload: PerformanceReportPayload): Prom
       method: "POST",
     });
   } catch (error) {
-    logger.error("performance.report_failed", {
-      message: error instanceof Error ? error.message : "Unknown error",
+    logger.error("performance.report_failed", "Performance report failed", error, {
+      endpoint: "/api/telemetry/performance",
     });
   }
 };
