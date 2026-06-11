@@ -8,7 +8,6 @@ on:
 
 jobs:
   commits:
-    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
 
     steps:
@@ -27,7 +26,24 @@ jobs:
         run: npm ci
 
       - name: Lint commit messages
-        run: npx commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }}
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            FROM_SHA="${{ github.event.pull_request.base.sha }}"
+            TO_SHA="${{ github.event.pull_request.head.sha }}"
+          else
+            # On push: lint commits introduced by this push.
+            # `before` can be all zeros on first push of a new branch.
+            if [[ "${{ github.event.before }}" == "0000000000000000000000000000000000000000" ]]; then
+              FROM_SHA="$(git rev-list --max-parents=0 HEAD)"
+            else
+              FROM_SHA="${{ github.event.before }}"
+            fi
+            TO_SHA="${{ github.sha }}"
+          fi
+
+          echo "Linting commit messages from $FROM_SHA to $TO_SHA"
+          npx commitlint --from "$FROM_SHA" --to "$TO_SHA"
 
   quality:
     runs-on: ubuntu-latest

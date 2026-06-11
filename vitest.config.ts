@@ -9,8 +9,40 @@ const dirname =
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
+  resolve: {
+    alias: {
+      "@": path.join(dirname, "src"),
+    },
+  },
   test: {
+    coverage: {
+      provider: "v8",
+      // Enforce coverage on core app logic (not UI routes/templates).
+      include: ["src/utils/**/*.{ts,tsx}"],
+      exclude: [
+        "src/**/*.d.ts",
+        "src/utils/index.ts",
+        // Exclude long-running browser monitors from unit coverage gating.
+        "src/utils/performance/performance-monitor.ts",
+        "src/utils/performance/report-performance.ts",
+      ],
+      thresholds: {
+        branches: 80,
+        functions: 80,
+        lines: 80,
+        statements: 80,
+      },
+    },
     projects: [
+      {
+        extends: true,
+        test: {
+          name: "unit",
+          environment: "jsdom",
+          include: ["src/utils/**/*.{test,spec}.{ts,tsx}"],
+          setupFiles: ["./vitest.setup.ts"],
+        },
+      },
       {
         extends: true,
         plugins: [
