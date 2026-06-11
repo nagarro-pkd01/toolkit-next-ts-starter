@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { Icon } from "@/components/atoms/Icon/Icon";
+import { Icon } from "@/components/atoms/icon/Icon";
 
 describe("Icon", () => {
   it("renders the uppercase initial from the label", () => {
