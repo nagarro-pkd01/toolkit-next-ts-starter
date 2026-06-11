@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Providers } from "@/app/providers";
-import { GoogleAnalyticsProvider } from "@/components/organisms/GoogleAnalytics/GoogleAnalyticsProvider";
+import { GoogleAnalyticsProvider } from "@/providers/GoogleAnalyticsProvider";
 import "@/styles/globals.scss";
 import { themeInitScript } from "@/utils/theme/theme-init-script";
 
