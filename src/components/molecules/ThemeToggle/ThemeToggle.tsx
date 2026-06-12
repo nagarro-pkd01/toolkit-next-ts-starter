@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/atoms/Button/Button";
+import { Button } from "@/components/atoms/button/Button";
 import { useThemeContext } from "@/components/organisms/ThemeProvider/ThemeProvider";
 import type { ThemePreference } from "@/constants/themeConstants";
 

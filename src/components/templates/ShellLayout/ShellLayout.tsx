@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import { Footer } from "@/components/organisms/Footer/Footer";
-import { Navbar } from "@/components/organisms/Navbar/Navbar";
+import { Footer } from "@/components/organisms/footer/Footer";
+import { Navbar } from "@/components/organisms/navbar/Navbar";
 import {
   FOOTER_CONFIG,
   HEADER_CONFIG,
