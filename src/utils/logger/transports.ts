@@ -1,26 +1,38 @@
+import pino from "pino";
+
 type LogPayload = {
   context: Record<string, unknown>;
+  error?: {
+    message: string;
+    name: string;
+    stack?: string;
+  };
+  event: string;
   level: "ERROR" | "INFO" | "WARN";
   message: string;
+  source: "client" | "server";
+  timestamp: string;
 };
 
 type Transport = (payload: LogPayload) => void;
 
-const consoleTransport: Transport = ({ context, level, message }) => {
-  const line = `[${new Date().toISOString()}] [${level}] ${message}`;
-  if (level === "ERROR") {
-    console.error(line, context);
-    return;
-  }
-  if (level === "WARN") {
-    console.warn(line, context);
-    return;
-  }
-  console.info(line, context);
+const pinoLogger = pino({
+  base: null,
+  formatters: {
+    level(label) {
+      return { level: label };
+    },
+  },
+  level: process.env.NODE_ENV === "production" ? "info" : "debug",
+  messageKey: "message",
+  timestamp: false,
+});
+
+const consoleTransport: Transport = ({ level, ...payload }) => {
+  const pinoLevel = level.toLowerCase() as "error" | "info" | "warn";
+  pinoLogger[pinoLevel](payload);
 };
 
-export const transports: Record<"console" | "datadog" | "sentry", Transport> = {
+export const transports: Record<"console", Transport> = {
   console: consoleTransport,
-  datadog: consoleTransport,
-  sentry: consoleTransport,
 };

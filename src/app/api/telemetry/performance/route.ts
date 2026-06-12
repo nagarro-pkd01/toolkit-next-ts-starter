@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 export async function POST(request: Request) {
   const payload = (await request.json()) as PerformanceReportPayload;
 
-  logger.info("performance.telemetry_received", {
+  logger.info("performance.telemetry_received", "Performance telemetry received", {
     alertCount: payload.alerts.length,
     metrics: payload.metrics.map((metric) => ({
       metric: metric.metric,
@@ -18,7 +18,7 @@ export async function POST(request: Request) {
   });
 
   for (const alert of payload.alerts) {
-    logger.warn("performance.telemetry_alert", {
+    logger.warn("performance.telemetry_alert", "Performance telemetry alert received", {
       metric: alert.metric,
       rating: alert.rating,
       recommendations: alert.recommendations,

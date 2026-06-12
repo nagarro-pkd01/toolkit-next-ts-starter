@@ -13,10 +13,9 @@ type ErrorPageProps = {
 
 export default function GlobalError({ error, reset }: ErrorPageProps) {
   useEffect(() => {
-    logger.error("Unhandled route error", {
+    logger.error("ui.error_boundary", "Unhandled route error", error, {
       digest: error.digest,
-      message: error.message,
-      name: error.name,
+      route: window.location.pathname,
     });
   }, [error]);
 
