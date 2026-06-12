@@ -7,10 +7,23 @@
 
 ## Supporting Branches
 
-- `feature/<ticket-or-scope>` for new functionality
-- `fix/<ticket-or-scope>` for regular bug fixes
+- `feature/<TICKET>-<id>-<kebab-description>` for new functionality
+- `bugfix/<TICKET>-<id>-<kebab-description>` for regular bug fixes
 - `hotfix/<ticket-or-scope>` for urgent production fixes from `main`
-- `release/<version>` for stabilization before merge to `main`
+- `chore/<TICKET>-<id>-<kebab-description>` for maintenance work
+- `release/<TICKET>-<id>-<kebab-description>` for stabilization before merge to `main`
+
+### Branch naming enforcement
+
+Local enforcement runs in Lefthook `pre-push` via `scripts/validateBranchName.mjs`.
+
+Allowed patterns:
+
+- `feature/ABC-123-some-kebab-description`
+- `bugfix/ABC-123-some-kebab-description`
+- `hotfix/ABC-123-some-kebab-description`
+- `chore/ABC-123-some-kebab-description`
+- `release/ABC-123-some-kebab-description`
 
 ## Merge Policy
 
