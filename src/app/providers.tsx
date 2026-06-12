@@ -6,7 +6,7 @@ import type { ReactNode } from "react";
 import { useRef } from "react";
 
 import { PerformanceMonitorProvider } from "@/components/organisms/PerformanceMonitor/PerformanceMonitorProvider";
-import { ThemeProvider } from "@/components/organisms/ThemeProvider/ThemeProvider";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 
 type ProvidersProps = {
   children: ReactNode;
