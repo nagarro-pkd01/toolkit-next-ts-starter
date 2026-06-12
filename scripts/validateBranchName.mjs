@@ -15,7 +15,7 @@ import { execSync } from "node:child_process";
  * - The description must be present (kebab-case recommended).
  */
 const BRANCH_REGEX =
-  /^(feature|bugfix|hotfix|chore|release)\/([A-Z][A-Z0-9]*-\d+-[a-z0-9]+(?:-[a-z0-9]+)*)$/;
+  /^(feat|fix|hotfix|chore|release)\/([A-Z][A-Z0-9]*-\d+-[a-z0-9]+(?:-[a-z0-9]+)*)$/;
 
 const REFERENCE_DOC = "docs/BRANCHING_STRATEGY.md";
 
@@ -38,8 +38,8 @@ if (!BRANCH_REGEX.test(branch)) {
   console.error(
     `\nERROR: Invalid branch name "${branch}".\n\n` +
       "Expected:\n" +
-      "  feature/ABC-123-some-kebab-description\n" +
-      "  bugfix/ABC-123-some-kebab-description\n" +
+      "  feat/ABC-123-some-kebab-description\n" +
+      "  fix/ABC-123-some-kebab-description\n" +
       "  hotfix/ABC-123-some-kebab-description\n" +
       "  chore/ABC-123-some-kebab-description\n" +
       "  release/ABC-123-some-kebab-description\n\n" +
