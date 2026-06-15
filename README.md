@@ -8,7 +8,7 @@ Enterprise-ready [Next.js](https://nextjs.org) starter with strict TypeScript, p
 - Next.js App Router with strict TypeScript and typed routes
 - Route-grouped App Router with `providers.tsx`, `error.tsx`, and `not-found.tsx`
 - Layered `src/` layout: `views`, `services`, `hooks`, `store`, `utils`, `constants`
-- Atomic design UI under `components/atoms`, `molecules`, `organisms`, `templates`
+- Reusable UI under generic primitives, templates, and domain-owned component folders
 - Design tokens and theme under `styles/design-system/`
 - Dedicated API/service layer under `services/` (including feature APIs such as `services/auth/`)
 - Zustand stores, shared hooks, and `utils/` for errors and logging
@@ -36,7 +36,10 @@ src/
   components/
     atoms/
     molecules/
-    organisms/
+    layout/
+    performance/
+    posts/
+    shop/
     templates/
   services/
     auth/

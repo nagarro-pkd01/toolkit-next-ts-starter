@@ -1,7 +1,7 @@
 # Views
 
-Page-level screens live here. Views assemble templates, organisms, feature hooks, and services into
-complete route interfaces.
+Page-level screens live here. Views assemble templates, domain components, feature hooks, and
+services into complete route interfaces.
 
 ## How to use
 

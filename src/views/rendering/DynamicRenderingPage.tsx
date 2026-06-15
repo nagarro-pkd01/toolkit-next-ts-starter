@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { ProductPageTemplate } from "@/components/templates/ProductPage/ProductPageTemplate";
+import { ProductPageTemplate } from "@/components/templates/product-page/ProductPageTemplate";
 import { APP_ROUTES } from "@/constants/routeConstants";
 import { fetchExamplePosts } from "@/services/rendering/fetch-examples-posts";
 import { PostPreviewList } from "@/views/rendering/components/PostPreviewList";

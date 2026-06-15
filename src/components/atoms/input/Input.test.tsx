@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { Input } from "@/components/atoms/Input/Input";
+import { Input } from "@/components/atoms/input/Input";
 
 describe("Input", () => {
   it("passes native input props through", () => {

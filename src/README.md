@@ -6,7 +6,7 @@ This folder contains the application code shipped by Next.js.
 
 - `app/` defines routes, layouts, route handlers, and framework entrypoints.
 - `views/` assembles page-level interfaces.
-- `components/` contains reusable UI following atomic design.
+- `components/` contains generic primitives, templates, and domain-owned reusable UI.
 - `providers/` owns application-wide React contexts and third-party providers.
 - `services/` handles APIs, integrations, and feature operations.
 - `hooks/` contains shared React hooks.

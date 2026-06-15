@@ -6,7 +6,7 @@ Tokens and theme live under `styles/design-system/`. Global SCSS utilities live 
 
 - `atoms`: smallest reusable UI primitives
 - `molecules`: combinations of atoms
-- `organisms`: page sections composed of molecules
+- Domain components: page sections composed from design-system primitives
 - `templates`: layout scaffolds used by pages
 
 Each component folder should include:
