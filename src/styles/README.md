@@ -1,7 +1,16 @@
 # Styles
 
-- `globals.scss` — app-wide styles (imported from `app/layout.tsx`)
-- `mixins.scss`, `breakpoints.scss`, `animations.scss` — shared SCSS utilities
-- `design-system/` — tokens, theme variables, and TS token exports
+This folder contains application-wide styling foundations.
 
-Component-level styles use `*.module.scss` next to each component.
+## Contents
+
+- `globals.scss` contains app-wide styles imported by `app/layout.tsx`.
+- `mixins.scss`, `breakpoints.scss`, and `animations.scss` are shared SCSS utilities.
+- `design-system/` contains tokens, theme variables, and TypeScript token exports.
+
+## How to use
+
+Use global styles for document defaults and truly global behavior. Keep component styles in a
+colocated `ComponentName.module.scss` file to avoid accidental cross-component rules.
+
+Use design-system tokens instead of repeating raw colors, spacing, typography, or radius values.

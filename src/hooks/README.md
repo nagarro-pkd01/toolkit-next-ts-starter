@@ -1,5 +1,15 @@
 # Hooks
 
-Shared React hooks used across pages and components.
+This folder contains reusable React hooks shared across views and components.
 
-Feature-specific hooks (for example `use-auth.ts`) live here; call into `services/` for API and business logic.
+## How to use
+
+Hooks should begin with `use`, follow React's hook rules, and provide a focused reusable behavior.
+They may compose browser APIs, providers, stores, and services.
+
+Keep API-specific query and mutation hooks beside their feature in `src/services/`, such as
+`services/auth/use-login.tsx`. Keep provider context access close to the provider when it is not
+meaningful independently.
+
+Use this folder for genuinely cross-feature hooks such as debouncing, theme access, logging, and
+performance monitoring.
