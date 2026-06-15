@@ -18,5 +18,5 @@ their domain instead of classifying them by visual size.
 
 Keep `ComponentName.tsx`, `ComponentName.module.scss`, tests, stories, and component documentation
 together inside a kebab-case folder. Use direct component imports so unrelated components and styles
-do not enter the same route bundle. Page orchestration belongs in `src/views/`, and application-wide
+do not enter the same route bundle. Page orchestration belongs in `src/features/`, and application-wide
 contexts belong in `src/providers/`.

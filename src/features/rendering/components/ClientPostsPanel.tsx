@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 
 import type { ExamplePostsPayload } from "@/types/rendering-types";
-import { PostPreviewList } from "@/views/rendering/components/PostPreviewList";
-import { PostsSkeleton } from "@/views/rendering/components/PostsSkeleton";
+import { PostPreviewList } from "@/features/rendering/components/PostPreviewList";
+import { PostsSkeleton } from "@/features/rendering/components/PostsSkeleton";
 
 export const ClientPostsPanel = () => {
   const [payload, setPayload] = useState<ExamplePostsPayload | null>(null);

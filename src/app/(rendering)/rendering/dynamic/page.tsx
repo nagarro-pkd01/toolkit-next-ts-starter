@@ -1,3 +1,3 @@
 export const dynamic = "force-dynamic";
 
-export { default } from "@/views/rendering/DynamicRenderingPage";
+export { default } from "@/features/rendering/DynamicRenderingPage";

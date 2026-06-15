@@ -1,3 +1,3 @@
 export const revalidate = 60;
 
-export { default } from "@/views/rendering/IsrRenderingPage";
+export { default } from "@/features/rendering/IsrRenderingPage";
