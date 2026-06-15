@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
-import { Footer } from "@/components/organisms/Footer/Footer";
-import { Navbar } from "@/components/organisms/Navbar/Navbar";
+import { Footer } from "@/components/Footer/Footer";
+import { Navbar } from "@/components/Navbar/Navbar";
 import { ShellLayout } from "@/components/templates/ShellLayout/ShellLayout";
 import { FOOTER_CONFIG, HEADER_CONFIG, resolveLayoutShellOptions } from "@/constants/layoutConfig";
 

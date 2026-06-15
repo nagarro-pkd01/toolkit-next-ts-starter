@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 
-import { Footer } from "@/components/layout/footer/Footer";
-import { Navbar } from "@/components/layout/navbar/Navbar";
-import { ShellLayout } from "@/components/templates/shell-layout/ShellLayout";
+import { Footer } from "@/components/Footer/Footer";
+import { Navbar } from "@/components/Navbar/Navbar";
+import { ShellLayout } from "@/components/templates/ShellLayout/ShellLayout";
 import { FOOTER_CONFIG, HEADER_CONFIG, resolveLayoutShellOptions } from "@/constants/layoutConfig";
 
 import styles from "./ProductPageTemplate.module.scss";

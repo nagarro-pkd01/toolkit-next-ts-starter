@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { NavbarTools } from "@/components/layout/navbar/NavbarTools";
+import { NavbarTools } from "@/components/Navbar/NavbarTools";
 import { SearchBar } from "@/components/molecules/SearchBar/SearchBar";
 import type { HeaderConfig } from "@/constants/layoutConfig";
 
