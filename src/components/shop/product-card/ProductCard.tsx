@@ -1,4 +1,4 @@
-import { Badge } from "@/components/atoms/badge/Badge";
+import { Badge } from "@/components/atoms/Badge/Badge";
 import { PriceDisplay } from "@/components/molecules/price-display/PriceDisplay";
 
 import styles from "./ProductCard.module.scss";

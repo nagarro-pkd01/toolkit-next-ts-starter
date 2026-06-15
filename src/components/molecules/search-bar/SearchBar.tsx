@@ -1,5 +1,5 @@
-import { Icon } from "@/components/atoms/icon/Icon";
-import { Input } from "@/components/atoms/input/Input";
+import { Icon } from "@/components/atoms/Icon/Icon";
+import { Input } from "@/components/atoms/Input/Input";
 import styles from "./SearchBar.module.scss";
 
 type SearchBarProps = {

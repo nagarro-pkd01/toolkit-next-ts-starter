@@ -5,7 +5,7 @@ import { useThemeContext } from "@/providers/ThemeProvider";
 import { trackEvent } from "@/services/analytics/google-analytics";
 
 import styles from "./ThemeToggle.module.scss";
-import { Button } from "@/components/atoms/button/Button";
+import { Button } from "@/components/atoms/Button/Button";
 
 const PREFERENCE_LABELS: Record<ThemePreference, string> = {
   dark: "Dark",
