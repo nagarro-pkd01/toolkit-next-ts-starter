@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { NavbarTools } from "@/components/layout/navbar/NavbarTools";
-import { SearchBar } from "@/components/molecules/search-bar/SearchBar";
+import { SearchBar } from "@/components/molecules/SearchBar/SearchBar";
 import type { HeaderConfig } from "@/constants/layoutConfig";
 
 import styles from "./Navbar.module.scss";

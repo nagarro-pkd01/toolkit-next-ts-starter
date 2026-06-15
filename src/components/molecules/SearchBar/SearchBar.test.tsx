@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { SearchBar } from "@/components/molecules/search-bar/SearchBar";
+import { SearchBar } from "@/components/molecules/SearchBar/SearchBar";
 
 describe("SearchBar", () => {
   it("renders the default search input", () => {
