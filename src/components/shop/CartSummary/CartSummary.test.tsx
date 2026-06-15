@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { CartSummary } from "@/components/Shop/cart-summary/CartSummary";
+import { CartSummary } from "@/components/Shop/CartSummary/CartSummary";
 
 describe("CartSummary", () => {
   it("renders the cart total", () => {

@@ -1,5 +1,5 @@
-import { CartSummary } from "@/components/Shop/cart-summary/CartSummary";
-import { ProductCard } from "@/components/Shop/product-card/ProductCard";
+import { CartSummary } from "@/components/Shop/CartSummary/CartSummary";
+import { ProductCard } from "@/components/Shop/ProductCard/ProductCard";
 import { ProductPageTemplate } from "@/components/templates/ProductPageLayout/ProductPageTemplate";
 import { internalClient } from "@/services/api-clients/internal-client";
 import { withErrorBoundary } from "@/utils/errors/error-boundary";

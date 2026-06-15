@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { ProductCard } from "@/components/Shop/product-card/ProductCard";
+import { ProductCard } from "@/components/Shop/ProductCard/ProductCard";
 
 describe("ProductCard", () => {
   it("renders featured product details", () => {

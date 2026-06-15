@@ -1,4 +1,4 @@
-import { PostList } from "@/components/Posts/post-list/PostList";
+import { PostList } from "@/components/Posts/PostList/PostList";
 import { DashboardLayout } from "@/components/templates/DashboardLayout/DashboardLayout";
 import { postsService } from "@/services/posts/posts-service";
 import { withErrorBoundary } from "@/utils/errors/error-boundary";
