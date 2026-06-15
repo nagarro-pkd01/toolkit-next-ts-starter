@@ -2,6 +2,9 @@
 
 Enterprise-ready [Next.js](https://nextjs.org) starter with strict TypeScript, projen metadata, ESLint + Prettier, git hooks, CI, and release automation.
 
+After generating a project, complete the replacement and production-readiness checklist in
+[`TODO.md`](TODO.md).
+
 ## Included Defaults
 
 - Projen project metadata and synthesis entrypoint (`.projenrc.js`)
