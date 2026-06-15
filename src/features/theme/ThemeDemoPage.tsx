@@ -1,5 +1,5 @@
 import { ProductPageTemplate } from "@/components/templates/ProductPageLayout/ProductPageTemplate";
-import { ThemeDemoContent } from "@/views/theme/ThemeDemoContent";
+import { ThemeDemoContent } from "@/features/theme/ThemeDemoContent";
 
 export default function ThemeDemoPage() {
   return (

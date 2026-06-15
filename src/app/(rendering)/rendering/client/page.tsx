@@ -1,1 +1,1 @@
-export { default } from "@/views/rendering/ClientRenderingPage";
+export { default } from "@/features/rendering/ClientRenderingPage";

@@ -2,8 +2,8 @@ import Link from "next/link";
 
 import { ProductPageTemplate } from "@/components/templates/ProductPageLayout/ProductPageTemplate";
 import { APP_ROUTES } from "@/constants/routeConstants";
-import { ClientPostsPanel } from "@/views/rendering/components/ClientPostsPanel";
-import { RenderingMeta } from "@/views/rendering/components/RenderingMeta";
+import { ClientPostsPanel } from "@/features/rendering/components/ClientPostsPanel";
+import { RenderingMeta } from "@/features/rendering/components/RenderingMeta";
 
 import styles from "./RenderingExamplePage.module.scss";
 

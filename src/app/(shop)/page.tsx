@@ -1,7 +1,7 @@
 export const dynamic = "force-dynamic";
 
 import { getClientKey } from "@/utils/layout/get-client-key";
-import ShopPage from "@/views/shop/ShopPage";
+import ShopPage from "@/features/shop/ShopPage";
 
 type ShopRouteProps = {
   searchParams: Promise<{ client?: string | string[] }>;

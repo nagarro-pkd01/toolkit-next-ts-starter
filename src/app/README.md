@@ -13,7 +13,7 @@ loading states, error boundaries, and server route handlers.
 
 ## How to use
 
-Keep `page.tsx` files thin: import and render the matching page from `src/views/`. Use `route.ts` for
+Keep `page.tsx` files thin: import and render the matching page from `src/features/`. Use `route.ts` for
 HTTP endpoints and keep reusable business or integration logic in `src/services/`.
 
 Server Components are the default. Add `"use client"` only when a file needs browser APIs, state,

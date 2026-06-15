@@ -1,7 +1,7 @@
 export const dynamic = "force-dynamic";
 
 import { getClientKey } from "@/utils/layout/get-client-key";
-import DashboardPage from "@/views/dashboard/DashboardPage";
+import DashboardPage from "@/features/dashboard/DashboardPage";
 
 type DashboardRouteProps = {
   searchParams: Promise<{ client?: string | string[] }>;

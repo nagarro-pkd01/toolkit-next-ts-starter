@@ -1,7 +1,8 @@
-import { PostCard } from "@/components/Posts/PostCard/PostCard";
+
 import type { Post } from "@/types/post-types";
 
 import styles from "./PostList.module.scss";
+import { PostCard } from "@/components/posts/PostCard/PostCard";
 
 type PostListProps = Readonly<{
   posts: Post[];

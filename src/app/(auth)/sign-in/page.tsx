@@ -1,5 +1,5 @@
 import { getClientKey } from "@/utils/layout/get-client-key";
-import SignInPage from "@/views/sign-in/SignInPage";
+import SignInPage from "@/features/sign-in/SignInPage";
 
 type SignInRouteProps = {
   searchParams: Promise<{ client?: string | string[] }>;
