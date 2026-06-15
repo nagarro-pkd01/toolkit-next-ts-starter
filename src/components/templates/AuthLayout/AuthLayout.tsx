@@ -9,9 +9,9 @@ type AuthLayoutProps = {
   clientKey?: string;
 };
 
-export const AuthLayout = ({ children, clientKey }: AuthLayoutProps) => {
+export const AuthLayout = ({ children }: AuthLayoutProps) => {
   return (
-    <ShellLayout clientKey={clientKey} layoutId="auth">
+    <ShellLayout>
       <main className={styles.layout}>{children}</main>
     </ShellLayout>
   );

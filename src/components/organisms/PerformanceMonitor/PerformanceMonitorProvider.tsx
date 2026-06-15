@@ -1,9 +1,18 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import type { ReactNode } from "react";
 
-import { PerformancePanel } from "@/components/organisms/PerformancePanel/PerformancePanel";
 import { usePerformanceMonitoring } from "@/hooks/usePerformanceMonitoring";
+import { usePerformanceStore } from "@/store/performance-store";
+
+const PerformancePanel = dynamic(
+  () =>
+    import("@/components/organisms/PerformancePanel/PerformancePanel").then(
+      (module) => module.PerformancePanel,
+    ),
+  { ssr: false },
+);
 
 type PerformanceMonitorProviderProps = {
   children: ReactNode;
@@ -11,11 +20,12 @@ type PerformanceMonitorProviderProps = {
 
 export const PerformanceMonitorProvider = ({ children }: PerformanceMonitorProviderProps) => {
   usePerformanceMonitoring();
+  const hasAlerts = usePerformanceStore((state) => state.alerts.length > 0);
 
   return (
     <>
       {children}
-      <PerformancePanel />
+      {hasAlerts ? <PerformancePanel /> : null}
     </>
   );
 };
