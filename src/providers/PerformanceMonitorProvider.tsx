@@ -8,7 +8,7 @@ import { usePerformanceStore } from "@/store/performance-store";
 
 const PerformancePanel = dynamic(
   () =>
-    import("@/components/Performance/performance-panel/PerformancePanel").then(
+    import("@/components/performance/performance-panel/PerformancePanel").then(
       (module) => module.PerformancePanel,
     ),
   { ssr: false },
