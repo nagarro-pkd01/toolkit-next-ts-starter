@@ -29,12 +29,21 @@ const metricUnit: Record<PerformanceMetricName, string> = {
 export class PerformanceMonitor {
   private alerts: PerformanceAlert[] = [];
   private disposed = false;
+  private readonly handlePageHide = () => {
+    void this.flushReport();
+  };
+  private readonly handleVisibilityChange = () => {
+    if (document.visibilityState === "hidden") {
+      void this.flushReport();
+    }
+  };
   private longTaskObserver: PerformanceObserver | undefined;
   private memorySamples: number[] = [];
   private memoryTimer: ReturnType<typeof setInterval> | undefined;
   private metrics: PerformanceMetricSnapshot[] = [];
   private onAlert?: (alert: PerformanceAlert) => void;
   private reportedWebVitals = new Set<PerformanceMetricName>();
+  private started = false;
   private thresholdAlerted = new Set<PerformanceMetricName>();
 
   constructor(options?: MonitorOptions) {
@@ -42,10 +51,11 @@ export class PerformanceMonitor {
   }
 
   start(): void {
-    if (this.disposed || typeof window === "undefined") {
+    if (this.disposed || this.started || typeof window === "undefined") {
       return;
     }
 
+    this.started = true;
     this.registerWebVitals();
     this.registerLongTasks();
     this.registerMemorySampling();
@@ -53,11 +63,25 @@ export class PerformanceMonitor {
   }
 
   dispose(): void {
+    if (this.disposed) {
+      return;
+    }
+
     this.disposed = true;
     this.longTaskObserver?.disconnect();
-    if (this.memoryTimer) {
+    this.longTaskObserver = undefined;
+
+    if (this.memoryTimer !== undefined) {
       clearInterval(this.memoryTimer);
+      this.memoryTimer = undefined;
     }
+
+    if (typeof window !== "undefined") {
+      document.removeEventListener("visibilitychange", this.handleVisibilityChange);
+      window.removeEventListener("pagehide", this.handlePageHide);
+    }
+
+    this.onAlert = undefined;
   }
 
   getAlerts(): PerformanceAlert[] {
@@ -133,19 +157,16 @@ export class PerformanceMonitor {
   }
 
   private registerPageUnloadReport(): void {
-    const flush = () => {
-      void this.flushReport();
-    };
-
-    window.addEventListener("visibilitychange", () => {
-      if (document.visibilityState === "hidden") {
-        flush();
-      }
-    });
-    window.addEventListener("pagehide", flush);
+    document.addEventListener("visibilitychange", this.handleVisibilityChange);
+    window.addEventListener("pagehide", this.handlePageHide);
   }
 
   private recordMetric(metric: PerformanceMetricName, value: number): void {
+    // web-vitals v5 does not expose unsubscribe functions, so callbacks may outlive this instance.
+    if (this.disposed) {
+      return;
+    }
+
     const roundedValue = metric === "CLS" ? Number(value.toFixed(3)) : Math.round(value);
     const rating = rateMetric(metric, roundedValue);
 
