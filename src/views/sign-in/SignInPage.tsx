@@ -1,4 +1,4 @@
-import { AuthLayout } from "@/components/templates/AuthLayout/AuthLayout";
+import { AuthLayout } from "@/components/templates/auth-layout/AuthLayout";
 import { LoginPanel } from "@/views/sign-in/LoginPanel";
 
 type SignInPageProps = {

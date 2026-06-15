@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/atoms/button/Button";
-import { ThemeToggle } from "@/components/molecules/ThemeToggle/ThemeToggle";
+import { ThemeToggle } from "@/components/molecules/theme-toggle/ThemeToggle";
 import { useTheme } from "@/hooks/useTheme";
 
 import styles from "./ThemeDemoPage.module.scss";

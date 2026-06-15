@@ -14,23 +14,41 @@ vi.mock("@/utils/logger/transports", () => {
 
 describe("logger", () => {
   it("emits info/warn/error to console transport with level", async () => {
-    logger.info("i", { a: 1 });
-    logger.warn("w", { b: 2 });
-    logger.error("e", { c: 3 });
+    const error = new Error("failed");
+
+    logger.info("test.info", "i", { a: 1 });
+    logger.warn("test.warn", "w", { b: 2 });
+    logger.error("test.error", "e", error, { c: 3 });
 
     const { transports } = await import("@/utils/logger/transports");
     expect(transports.console).toHaveBeenCalledTimes(3);
     expect(transports.console).toHaveBeenNthCalledWith(
       1,
-      expect.objectContaining({ level: "INFO", message: "i", context: { a: 1 } }),
+      expect.objectContaining({
+        context: { a: 1 },
+        event: "test.info",
+        level: "INFO",
+        message: "i",
+      }),
     );
     expect(transports.console).toHaveBeenNthCalledWith(
       2,
-      expect.objectContaining({ level: "WARN", message: "w", context: { b: 2 } }),
+      expect.objectContaining({
+        context: { b: 2 },
+        event: "test.warn",
+        level: "WARN",
+        message: "w",
+      }),
     );
     expect(transports.console).toHaveBeenNthCalledWith(
       3,
-      expect.objectContaining({ level: "ERROR", message: "e", context: { c: 3 } }),
+      expect.objectContaining({
+        context: { c: 3 },
+        error: expect.objectContaining({ message: "failed" }),
+        event: "test.error",
+        level: "ERROR",
+        message: "e",
+      }),
     );
   });
 });

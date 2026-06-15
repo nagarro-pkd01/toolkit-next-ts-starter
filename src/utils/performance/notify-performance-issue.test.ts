@@ -12,7 +12,7 @@ vi.mock("@/utils/logger", () => {
 
 describe("notifyPerformanceIssue", () => {
   it("logs a warning and dispatches browser event when window exists", async () => {
-    const { notifyPerformanceIssue } = await import("@/utils/performance/notify-perfomance-issue");
+    const { notifyPerformanceIssue } = await import("@/utils/performance/notify-performance-issue");
     const alert: PerformanceAlert = {
       detectedAt: "t",
       id: "id",
@@ -33,7 +33,7 @@ describe("notifyPerformanceIssue", () => {
   });
 
   it("does not throw when Notification is unavailable", async () => {
-    const { notifyPerformanceIssue } = await import("@/utils/performance/notify-perfomance-issue");
+    const { notifyPerformanceIssue } = await import("@/utils/performance/notify-performance-issue");
     const alert: PerformanceAlert = {
       detectedAt: "t",
       id: "id",
@@ -69,7 +69,7 @@ describe("notifyPerformanceIssue", () => {
     // @ts-expect-error test stub
     globalThis.Notification = NotificationMock;
 
-    const { notifyPerformanceIssue } = await import("@/utils/performance/notify-perfomance-issue");
+    const { notifyPerformanceIssue } = await import("@/utils/performance/notify-performance-issue");
     const alert: PerformanceAlert = {
       detectedAt: "t",
       id: "id",

@@ -1,6 +1,6 @@
-import { PostList } from "@/components/organisms/PostList/PostList";
-import { DashboardLayout } from "@/components/templates/DashboardLayout/DashboardLayout";
-import { postsService } from "@/services/posts";
+import { PostList } from "@/components/posts/post-list/PostList";
+import { DashboardLayout } from "@/components/templates/dashboard-layout/DashboardLayout";
+import { postsService } from "@/services/posts/posts-service";
 import { withErrorBoundary } from "@/utils/errors/error-boundary";
 
 import styles from "./DashboardPage.module.scss";

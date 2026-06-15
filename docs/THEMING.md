@@ -30,9 +30,9 @@ const { preference, resolvedTheme, setPreference, toggleTheme } = useTheme();
 
 ## Files
 
-| Path | Role |
-|------|------|
-| `constants/themeConstants.ts` | Storage key, class name, types |
-| `utils/theme/resolveTheme.ts` | Resolve `system` → light/dark |
-| `components/organisms/theme-provider/ThemeProvider.tsx` | Context + persistence |
-| `components/molecules/theme-toggle/ThemeToggle.tsx` | Navbar / demo controls |
+| Path                                                | Role                           |
+| --------------------------------------------------- | ------------------------------ |
+| `constants/themeConstants.ts`                       | Storage key, class name, types |
+| `utils/theme/resolveTheme.ts`                       | Resolve `system` → light/dark  |
+| `providers/ThemeProvider.tsx`                       | Context + persistence          |
+| `components/molecules/theme-toggle/ThemeToggle.tsx` | Navbar / demo controls         |

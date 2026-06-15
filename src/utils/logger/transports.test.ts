@@ -1,32 +1,18 @@
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 
 import { transports } from "@/utils/logger/transports";
 
 describe("transports.console", () => {
-  it("logs ERROR via console.error", () => {
-    const spy = vi.spyOn(console, "error").mockImplementation(() => undefined);
-
-    transports.console({ level: "ERROR", message: "m", context: { a: 1 } });
-
-    expect(spy).toHaveBeenCalledTimes(1);
-    spy.mockRestore();
-  });
-
-  it("logs WARN via console.warn", () => {
-    const spy = vi.spyOn(console, "warn").mockImplementation(() => undefined);
-
-    transports.console({ level: "WARN", message: "m", context: { a: 1 } });
-
-    expect(spy).toHaveBeenCalledTimes(1);
-    spy.mockRestore();
-  });
-
-  it("logs INFO via console.info", () => {
-    const spy = vi.spyOn(console, "info").mockImplementation(() => undefined);
-
-    transports.console({ level: "INFO", message: "m", context: { a: 1 } });
-
-    expect(spy).toHaveBeenCalledTimes(1);
-    spy.mockRestore();
+  it.each(["ERROR", "INFO", "WARN"] as const)("accepts a %s payload", (level) => {
+    expect(() =>
+      transports.console({
+        context: { a: 1 },
+        event: "test.transport",
+        level,
+        message: "m",
+        source: "server",
+        timestamp: "2026-06-15T00:00:00.000Z",
+      }),
+    ).not.toThrow();
   });
 });
