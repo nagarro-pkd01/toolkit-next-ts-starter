@@ -1,11 +1,11 @@
 "use client";
 
-import { Button } from "@/components/atoms/Button/Button";
 import type { ThemePreference } from "@/constants/themeConstants";
 import { useThemeContext } from "@/providers/ThemeProvider";
 import { trackEvent } from "@/services/analytics/google-analytics";
 
 import styles from "./ThemeToggle.module.scss";
+import { Button } from "@/components/atoms";
 
 const PREFERENCE_LABELS: Record<ThemePreference, string> = {
   dark: "Dark",
