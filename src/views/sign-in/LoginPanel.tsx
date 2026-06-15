@@ -1,6 +1,6 @@
 import { Button } from "@/components/atoms/Button/Button";
 import { Input } from "@/components/atoms/Input/Input";
-import { FormField } from "@/components/molecules/form-field/FormField";
+import { FormField } from "@/components/molecules/FormField/FormField";
 
 import styles from "./LoginPanel.module.scss";
 

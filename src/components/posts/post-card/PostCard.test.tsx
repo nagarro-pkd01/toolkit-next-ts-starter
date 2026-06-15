@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { PostCard } from "@/components/posts/post-card/PostCard";
+import { PostCard } from "@/components/Posts/post-card/PostCard";
 
 describe("PostCard", () => {
   it("renders post metadata and content", () => {

@@ -1,6 +1,6 @@
-import { CartSummary } from "@/components/shop/cart-summary/CartSummary";
-import { ProductCard } from "@/components/shop/product-card/ProductCard";
-import { ProductPageTemplate } from "@/components/templates/product-page/ProductPageTemplate";
+import { CartSummary } from "@/components/Shop/cart-summary/CartSummary";
+import { ProductCard } from "@/components/Shop/product-card/ProductCard";
+import { ProductPageTemplate } from "@/components/templates/ProductPageLayout/ProductPageTemplate";
 import { internalClient } from "@/services/api-clients/internal-client";
 import { withErrorBoundary } from "@/utils/errors/error-boundary";
 

@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { PriceDisplay } from "@/components/molecules/price-display/PriceDisplay";
+import { PriceDisplay } from "@/components/molecules/PriceDisplay/PriceDisplay";
 
 describe("PriceDisplay", () => {
   it("formats USD by default", () => {

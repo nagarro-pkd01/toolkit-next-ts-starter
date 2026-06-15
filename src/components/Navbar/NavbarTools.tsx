@@ -1,6 +1,6 @@
 "use client";
 
-import { ThemeToggle } from "@/components/molecules/theme-toggle/ThemeToggle";
+import { ThemeToggle } from "@/components/molecules/ThemeToggle/ThemeToggle";
 
 import styles from "./Navbar.module.scss";
 

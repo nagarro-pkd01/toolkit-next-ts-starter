@@ -1,4 +1,4 @@
-import { PriceDisplay } from "@/components/molecules/price-display/PriceDisplay";
+import { PriceDisplay } from "@/components/molecules/PriceDisplay/PriceDisplay";
 import styles from "./CartSummary.module.scss";
 
 type CartSummaryProps = {
