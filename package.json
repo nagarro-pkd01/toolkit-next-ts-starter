@@ -30,6 +30,7 @@
     "AGENTS.md",
     "CLAUDE.md",
     "README.md",
+    "TODO.md",
     "eslint.config.mjs",
     "prettier.config.cjs",
     ".prettierignore",
