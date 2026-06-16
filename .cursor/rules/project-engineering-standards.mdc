@@ -1,0 +1,20 @@
+---
+description: Project engineering standards for TypeScript, ESLint, Next.js, React, and SCSS. Use before implementing or reviewing code in this repository.
+alwaysApply: true
+---
+
+# Project Engineering Standards
+
+Before editing code, read:
+
+1. `AGENTS.md`
+2. `docs/AI_CODING_AGENTS.md`
+3. `.cursor/rules/karpathy-guidelines.mdc`
+4. `docs/ENGINEERING_RULES.md`
+5. `docs/NAMING_CONVENTIONS.md`
+6. The nearest folder `README.md`
+7. The relevant installed Next.js guide under `node_modules/next/dist/docs/` when touching routing,
+   App Router, metadata, caching, layouts, server components, or route handlers.
+
+Use the documented standards for TypeScript, ESLint, React hooks, Next.js boundaries, SCSS modules,
+testing, and verification.
