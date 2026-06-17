@@ -6,6 +6,10 @@ are broader than one source folder or component.
 ## Contents
 
 - `NAMING_CONVENTIONS.md` defines naming rules.
+- `ENGINEERING_RULES.md` defines TypeScript, ESLint, React, Next.js, SCSS, testing, and AI-agent
+  workflow rules.
+- `AI_CODING_AGENTS.md` explains which project instruction files are read by Codex, Cursor, Claude,
+  Copilot, Gemini, Windsurf, Cline, Roo, and generic AI tools.
 - `TESTING.md`, `LOGGING.md`, and `PERFORMANCE_MONITORING.md` describe engineering practices.
 - `BRANCHING_STRATEGY.md`, `COMMIT_MESSAGES.md`, and `NPM_PUBLISHING.md` describe delivery.
 - `adr/` records important architectural decisions and their reasoning.

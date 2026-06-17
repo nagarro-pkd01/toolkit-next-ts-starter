@@ -21,6 +21,9 @@ After generating a project, complete the replacement and production-readiness ch
 - CI workflow and NPM publish workflow
 - Starter logging utility and documentation for operational consistency
 - Starter templates for Cursor and Claude skill workflows
+- Engineering rules for TypeScript, ESLint, React, Next.js, SCSS, and AI agents
+  (`docs/ENGINEERING_RULES.md`)
+- AI coding-agent instruction coverage (`docs/AI_CODING_AGENTS.md`)
 - Documented naming conventions (`docs/NAMING_CONVENTIONS.md`)
 - Rendering strategy examples with docs (`/rendering`, `docs/RENDERING_STRATEGIES.md`)
 - Vitest + React Testing Library (unit/component) and Playwright (E2E) - `docs/TESTING.md`
