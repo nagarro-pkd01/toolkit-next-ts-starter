@@ -1,7 +1,7 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 import * as dotenv from "dotenv";
-import openapiTS, { astToString } from "openapi-typescript";
+import { generateApi, type GenerateApiParams } from "swagger-typescript-api";
 
 dotenv.config({ path: ".env.local" });
 
@@ -11,67 +11,27 @@ const OUT = path.resolve(process.cwd(), "api-specs-model");
 const LOCAL_PATH = path.resolve(process.cwd(), "openapi.json");
 const SKIP = new Set(["api", "v1", "v2", "v3"]);
 
-type Param = { in: string };
-type Op = { parameters?: Param[]; requestBody?: unknown; responses?: Record<string, unknown> };
-type PathItem = Record<string, Op>;
-type Schema = { paths?: Record<string, PathItem> };
+type Schemas = Record<string, unknown>;
+type Spec = { paths?: Record<string, unknown>; components?: { schemas?: Schemas } };
+type SpecLiteral = Extract<GenerateApiParams, { spec: unknown }>["spec"];
 
-async function main() {
-  const schema =
-    SOURCE === "local"
-      ? JSON.parse(fs.readFileSync(LOCAL_PATH, "utf-8"))
-      : await fetch(URL)
-          .then((r) => {
-            if (!r.ok) throw new Error(`${r.status} ${r.statusText}`);
-            return r.json();
-          })
-          .then((json) => {
-            fs.writeFileSync(LOCAL_PATH, JSON.stringify(json, null, 2));
-            return json;
-          });
-
-  const ast = await openapiTS(schema, { version: 3 });
-  fs.mkdirSync(OUT, { recursive: true });
-  fs.writeFileSync(
-    path.join(OUT, "schema.d.ts"),
-    `// AUTO-GENERATED — DO NOT EDIT MANUALLY\n\n${astToString(ast)}`,
-  );
-
-  const domains = new Map<string, Array<{ method: string; pathStr: string; op: Op }>>();
-  const paths = (schema as Schema).paths ?? {};
-
-  for (const [pathStr, pathItem] of Object.entries(paths)) {
-    const domain =
-      pathStr
-        .replace(/^\//, "")
-        .split("/")
-        .find((s) => !SKIP.has(s) && !s.startsWith("{")) ?? "misc";
-
-    if (!domains.has(domain)) domains.set(domain, []);
-
-    for (const method of ["get", "post", "put", "patch", "delete"]) {
-      const op = pathItem[method];
-      if (op) {
-        const list = domains.get(domain);
-        if (list) list.push({ method, pathStr, op });
-      }
+// Collect component schema names reachable from a node, following $refs transitively.
+function collectRefs(node: unknown, schemas: Schemas, acc: Set<string>) {
+  if (!node || typeof node !== "object") return;
+  if (Array.isArray(node)) {
+    for (const item of node) collectRefs(item, schemas, acc);
+    return;
+  }
+  for (const [key, value] of Object.entries(node)) {
+    const ref =
+      key === "$ref" && typeof value === "string" && value.match(/\/components\/schemas\/(.+)$/);
+    if (ref && !acc.has(ref[1])) {
+      acc.add(ref[1]);
+      collectRefs(schemas[ref[1]], schemas, acc);
+    } else {
+      collectRefs(value, schemas, acc);
     }
   }
-
-  for (const [domain, ops] of domains) {
-    const dir = path.join(OUT, domain);
-    fs.mkdirSync(dir, { recursive: true });
-    fs.writeFileSync(path.join(dir, `${domain}.types.ts`), buildTypes(domain, ops));
-    fs.writeFileSync(path.join(dir, `${domain}.api.ts`), buildApi(domain, ops));
-  }
-
-  const exports = [...domains.keys()].map((d) => `export * from "./${d}/${d}.types";`).join("\n");
-  fs.writeFileSync(
-    path.join(OUT, "index.ts"),
-    `// AUTO-GENERATED — DO NOT EDIT MANUALLY\n\n${exports}`,
-  );
-
-  console.log(`✓ ${domains.size} domains: ${[...domains.keys()].join(", ")}`);
 }
 
 function pascal(s: string) {
@@ -82,74 +42,99 @@ function pascal(s: string) {
     .join("");
 }
 
-function buildTypes(domain: string, ops: Array<{ method: string; pathStr: string; op: Op }>) {
-  let out = `// AUTO-GENERATED — DO NOT EDIT MANUALLY\n\nimport type { paths } from "../schema";\n\n`;
-
-  for (const { method, pathStr, op } of ops) {
-    const hasId = pathStr.includes("{");
-    const name = `${method}${pascal(domain)}${hasId ? "ById" : ""}`;
-    const Name = pascal(name);
-
-    const params = op.parameters ?? [];
-    const hasPath = params.some((p) => p.in === "path");
-    const hasQuery = params.some((p) => p.in === "query");
-    const hasBody = !!op.requestBody;
-
-    if (hasPath || hasQuery || hasBody) {
-      out += `export type ${Name}Request = {\n`;
-      if (hasPath) out += `  path: paths["${pathStr}"]["${method}"]["parameters"]["path"];\n`;
-      if (hasQuery) out += `  query?: paths["${pathStr}"]["${method}"]["parameters"]["query"];\n`;
-      if (hasBody)
-        out += `  body: paths["${pathStr}"]["${method}"]["requestBody"]["content"]["application/json"];\n`;
-      out += `};\n\n`;
-    }
-
-    const code = ["200", "201"].find((c) => op.responses?.[c]);
-    out += code
-      ? `export type ${Name}Response = paths["${pathStr}"]["${method}"]["responses"][${code}]["content"]["application/json"];\n\n`
-      : `export type ${Name}Response = void;\n\n`;
-  }
-
-  return out;
+function domainOf(pathStr: string) {
+  return (
+    pathStr
+      .replace(/^\//, "")
+      .split("/")
+      .find((s) => !SKIP.has(s) && !s.startsWith("{")) ?? "misc"
+  );
 }
 
-function buildApi(domain: string, ops: Array<{ method: string; pathStr: string; op: Op }>) {
-  const types: string[] = [];
-  const fns: string[] = [];
+// Banner for generated files: skips linting and signals the file is not hand-edited.
+const HEADER =
+  "/* eslint-disable */\n// AUTO-GENERATED by scripts/generate-types.ts — do not edit manually.\n\n";
 
-  for (const { method, pathStr, op } of ops) {
-    const hasId = pathStr.includes("{");
-    const name = `${method}${pascal(domain)}${hasId ? "ById" : ""}`;
-    const Name = pascal(name);
+function writeGenerated(filePath: string, content: string) {
+  fs.writeFileSync(filePath, HEADER + content);
+}
 
-    const params = op.parameters ?? [];
-    const hasPath = params.some((p) => p.in === "path");
-    const hasQuery = params.some((p) => p.in === "query");
-    const hasBody = !!op.requestBody;
-    const hasReq = hasPath || hasQuery || hasBody;
-
-    if (hasReq) types.push(`${Name}Request`);
-    types.push(`${Name}Response`);
-
-    const urlTemplate = pathStr.replace(/{(\w+)}/g, "${p.path.$1}");
-    const url = hasPath ? "`" + urlTemplate + "`" : `"${pathStr}"`;
-    const arg = hasReq ? `p: ${Name}Request` : "";
-    const errorMsg = "`${res.status} ${res.statusText}`";
-
-    fns.push(
-      `export async function ${name}(${arg}): Promise<${Name}Response> {`,
-      `  const res = await fetch(${url}, {`,
-      `    method: "${method.toUpperCase()}",`,
-      `    headers: { "Content-Type": "application/json" },`,
-      ...(hasBody ? [`    body: JSON.stringify(p.body),`] : []),
-      `  });`,
-      `  if (!res.ok) throw new Error(${errorMsg});`,
-      `  return res.json();`,
-      `}\n`,
-    );
+async function main() {
+  if (SOURCE !== "local") {
+    const res = await fetch(URL);
+    if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+    fs.writeFileSync(LOCAL_PATH, JSON.stringify(await res.json(), null, 2));
   }
 
-  return `// AUTO-GENERATED — DO NOT EDIT MANUALLY\n\nimport type { ${types.join(", ")} } from "./${domain}.types";\n\n${fns.join("\n")}`;
+  const spec = JSON.parse(fs.readFileSync(LOCAL_PATH, "utf-8")) as Spec;
+
+  const domains = new Map<string, Record<string, unknown>>();
+  for (const [pathStr, item] of Object.entries(spec.paths ?? {})) {
+    const domain = domainOf(pathStr);
+    if (!domains.has(domain)) domains.set(domain, {});
+    domains.get(domain)![pathStr] = item;
+  }
+
+  fs.rmSync(OUT, { recursive: true, force: true });
+  fs.mkdirSync(OUT, { recursive: true });
+
+  const allSchemas = spec.components?.schemas ?? {};
+
+  let httpClientWritten = false;
+  for (const [domain, paths] of domains) {
+    const used = new Set<string>();
+    collectRefs(paths, allSchemas, used);
+    const schemas = Object.fromEntries([...used].map((name) => [name, allSchemas[name]]));
+
+    const { files } = await generateApi({
+      spec: { ...spec, paths, components: { ...spec.components, schemas } } as SpecLiteral,
+      output: false,
+      modular: true,
+      httpClientType: "fetch",
+      generateClient: true,
+      generateResponses: true,
+      enumStyle: "enum",
+      extractEnums: true,
+      extractRequestParams: true,
+      extractRequestBody: true,
+      extractResponseBody: true,
+      extractResponseError: true,
+      extractingOptions: {
+        requestBodySuffix: ["Request", "Payload", "Body", "Input"],
+        responseBodySuffix: ["Response", "Data", "Result", "Output"],
+        responseErrorSuffix: ["ErrorResponse", "Error", "Fail", "Fault"],
+      },
+    });
+
+    const contentOf = (name: string) => files.find((f) => f.fileName === name)?.fileContent ?? "";
+    const route = files.find(
+      (f) => f.fileName !== "data-contracts" && f.fileName !== "http-client",
+    );
+    const dir = path.join(OUT, domain);
+    fs.mkdirSync(dir, { recursive: true });
+
+    writeGenerated(path.join(dir, `${domain}.types.ts`), contentOf("data-contracts"));
+
+    const api = (route?.fileContent ?? "")
+      .replace('from "./data-contracts"', `from "./${domain}.types"`)
+      .replace('from "./http-client"', 'from "../http-client"')
+      .replace(/export class \w+</, `export class ${pascal(domain)}Api<`);
+    writeGenerated(path.join(dir, `${domain}.api.ts`), api);
+
+    if (!httpClientWritten) {
+      writeGenerated(path.join(OUT, "http-client.ts"), contentOf("http-client"));
+      httpClientWritten = true;
+    }
+  }
+
+  const exports = ['export * from "./http-client";'];
+  for (const domain of domains.keys()) {
+    exports.push(`export * from "./${domain}/${domain}.types";`);
+    exports.push(`export * from "./${domain}/${domain}.api";`);
+  }
+  writeGenerated(path.join(OUT, "index.ts"), `${exports.join("\n")}\n`);
+
+  console.log(`✓ ${domains.size} domains: ${[...domains.keys()].join(", ")}`);
 }
 
 main().catch(() => process.exit(1));

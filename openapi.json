@@ -1,0 +1,580 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "RSG BFF API",
+    "description": "RSG Backend For Frontend service API documentation",
+    "version": "1.0.0"
+  },
+  "components": {
+    "schemas": {
+      "HealthStatus": {
+        "type": "string",
+        "enum": ["ok", "degraded", "down"]
+      },
+      "HealthData": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/HealthStatus"
+          },
+          "uptime": {
+            "type": "number"
+          },
+          "env": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          }
+        }
+      },
+      "CartItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "seller": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "integer"
+          },
+          "price": {
+            "type": "number"
+          }
+        }
+      },
+      "Cart": {
+        "type": "object",
+        "properties": {
+          "itemCount": {
+            "type": "integer"
+          },
+          "cartId": {
+            "type": "string"
+          },
+          "locale": {
+            "type": "string"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CartItem"
+            }
+          }
+        }
+      },
+      "SigninData": {
+        "type": "object",
+        "properties": {
+          "authStatus": {
+            "type": "string"
+          }
+        }
+      },
+      "ProductDetailsData": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "product": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "variations": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "operationId": "healthCheck",
+        "tags": ["health"],
+        "description": "Health check endpoint",
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/HealthData"
+                    },
+                    "error": {
+                      "type": ["null", "object"]
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        },
+                        "timestamp": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/classic-signin": {
+      "post": {
+        "operationId": "classicSignin",
+        "tags": ["auth"],
+        "description": "Authenticate a user with email and password via VTEX ID",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["username", "password"],
+                "properties": {
+                  "username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/SigninData"
+                    },
+                    "error": {
+                      "type": ["null", "object"]
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        },
+                        "timestamp": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing or invalid request fields",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Missing or invalid request fields",
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "data": {
+                      "type": ["null", "object"]
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "example": "AUTH_INVALID_EMAIL"
+                        },
+                        "message": {
+                          "type": "string",
+                          "example": "Invalid email address"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        },
+                        "timestamp": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized responses",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "title": "InvalidCredentials",
+                      "description": "Request lacks valid authentication",
+                      "type": "object",
+                      "properties": {
+                        "success": {
+                          "type": "boolean",
+                          "example": false
+                        },
+                        "data": {
+                          "type": ["object", "null"]
+                        },
+                        "error": {
+                          "type": "object",
+                          "properties": {
+                            "code": {
+                              "type": "string",
+                              "example": "AUTH_INVALID_CREDENTIALS"
+                            },
+                            "message": {
+                              "type": "string",
+                              "example": "Invalid email or password"
+                            }
+                          }
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "requestId": {
+                              "type": "string"
+                            },
+                            "timestamp": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "title": "AuthenticationFailed",
+                      "description": "Request lacks valid authentication",
+                      "type": "object",
+                      "properties": {
+                        "success": {
+                          "type": "boolean",
+                          "example": false
+                        },
+                        "data": {
+                          "type": ["object", "null"]
+                        },
+                        "error": {
+                          "type": "object",
+                          "properties": {
+                            "code": {
+                              "type": "string",
+                              "example": "AUTH_ERROR"
+                            },
+                            "message": {
+                              "type": "string",
+                              "example": "Authentication failed"
+                            }
+                          }
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "requestId": {
+                              "type": "string"
+                            },
+                            "timestamp": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                "examples": {
+                  "invalidCredentials": {
+                    "summary": "Invalid Credentials",
+                    "value": {
+                      "success": false,
+                      "data": null,
+                      "error": {
+                        "code": "AUTH_INVALID_CREDENTIALS",
+                        "message": "Invalid email or password"
+                      },
+                      "meta": {
+                        "requestId": "string",
+                        "timestamp": "string"
+                      }
+                    }
+                  },
+                  "authError": {
+                    "summary": "Authentication Failed",
+                    "value": {
+                      "success": false,
+                      "data": null,
+                      "error": {
+                        "code": "AUTH_ERROR",
+                        "message": "Authentication failed"
+                      },
+                      "meta": {
+                        "requestId": "string",
+                        "timestamp": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Account is blocked or usage limits exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Account is blocked or usage limits exceeded",
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "data": {
+                      "type": "null"
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "example": "AUTH_ACCOUNT_LOCKED"
+                        },
+                        "message": {
+                          "type": "string",
+                          "example": "Account is blocked"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        },
+                        "timestamp": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/logout": {
+      "get": {
+        "operationId": "logout",
+        "tags": ["auth"],
+        "description": "Log out the current user and clear VTEX ID session cookies",
+        "responses": {
+          "204": {
+            "description": "Default Response"
+          }
+        }
+      }
+    },
+    "/api/v1/checkout/cart": {
+      "get": {
+        "operationId": "getCart",
+        "tags": ["cart"],
+        "description": "Retrieve the current user's cart",
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Cart"
+                    },
+                    "error": {
+                      "type": ["null", "object"]
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        },
+                        "timestamp": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/checkout/cart/add-items": {
+      "post": {
+        "operationId": "addCartItems",
+        "tags": ["cart"],
+        "description": "Add one or more items to the current user's cart",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "required": ["skuId", "sellerId", "quantity"],
+                  "properties": {
+                    "skuId": {
+                      "type": "string"
+                    },
+                    "sellerId": {
+                      "type": "string"
+                    },
+                    "quantity": {
+                      "type": "integer",
+                      "minimum": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Cart"
+                    },
+                    "error": {
+                      "type": ["null", "object"]
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        },
+                        "timestamp": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/product/{productId}": {
+      "get": {
+        "operationId": "getProductDetails",
+        "tags": ["product"],
+        "description": "Get product details with variations and SKU context",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "pattern": "^[0-9]+$"
+            },
+            "in": "path",
+            "name": "productId",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/ProductDetailsData"
+                    },
+                    "error": {
+                      "type": ["null", "object"]
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true,
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        },
+                        "timestamp": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

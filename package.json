@@ -83,7 +83,7 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,mjs,cjs}": [
-      "eslint --fix --max-warnings=0"
+      "eslint --fix --max-warnings=0 --no-warn-ignored"
     ],
     "*.{json,md,yml,yaml,css,scss}": [
       "prettier --write"
@@ -135,13 +135,13 @@
     "jsdom": "^29.1.1",
     "lefthook": "^1.13.6",
     "lint-staged": "^16.4.0",
-    "openapi-typescript": "^7.13.0",
     "playwright": "^1.60.0",
     "prettier": "^3.3.3",
     "projen": "^0.99.68",
     "sass": "^1.99.0",
     "semantic-release": "^24.2.9",
     "storybook": "^10.4.1",
+    "swagger-typescript-api": "^13.12.2",
     "ts-node": "^10.9.2",
     "tsx": "^4.22.4",
     "typescript": "^5",

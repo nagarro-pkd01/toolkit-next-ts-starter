@@ -16,6 +16,7 @@ const eslintConfig = [
       "**/.lighthouseci/**",
       "**/.projen/**",
       "**/.projenrc.js",
+      "api-specs-model/**",
     ],
   },
   ...nextCoreWebVitals,
